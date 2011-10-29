@@ -18,11 +18,11 @@
 - (void)loadView
 {
 	[super loadView];
-	
+
 	self.toolbarItems = [NSArray arrayWithObjects:
 						 [[[UIBarButtonItem alloc] initWithTitle:SHKLocalizedString(@"Logout") style:UIBarButtonItemStyleBordered target:self action:@selector(logout)] autorelease],
 						 nil
-						 ];	
+						 ];
 }
 
 #pragma mark -
@@ -36,40 +36,40 @@
 
 
 // Customize the number of rows in the table view.
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 4;//5;
 }
 
 
 // Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
-{    
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     static NSString *CellIdentifier = @"Cell";
-    
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-    
-	switch (indexPath.row) 
+
+	switch (indexPath.row)
 	{
 		case 0:
 			cell.textLabel.text = SHKLocalizedString(@"Sharing a Link");
 			break;
-			
+
 		case 1:
 			cell.textLabel.text = SHKLocalizedString(@"Sharing an Image");
 			break;
-			
+
 		case 2:
 			cell.textLabel.text = SHKLocalizedString(@"Sharing Text");
 			break;
-			
+
 		case 3:
 			cell.textLabel.text = SHKLocalizedString(@"Sharing a File");
 			break;
-			
+
 		//case 4:
 		//	cell.textLabel.text = @"Logout of All Services";
 		//	break;
@@ -82,35 +82,35 @@
 #pragma mark -
 #pragma mark Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	switch (indexPath.row) 
+	switch (indexPath.row)
 	{
 		case 0:
 			[self.navigationController pushViewController:[[[ExampleShareLink alloc] initWithNibName:nil bundle:nil] autorelease] animated:YES];
 			break;
-			
+
 		case 1:
-			
+
 			[self.navigationController pushViewController:[[[ExampleShareImage alloc] initWithNibName:nil bundle:nil] autorelease] animated:YES];
 			break;
-			
+
 		case 2:
 			[self.navigationController pushViewController:[[[ExampleShareText alloc] initWithNibName:nil bundle:nil] autorelease] animated:YES];
 			break;
-			
+
 		case 3:
 			[self.navigationController pushViewController:[[[ExampleShareFile alloc] initWithNibName:nil bundle:nil] autorelease] animated:YES];
 			break;
-			
+
 		//case 4:
 		//	[SHK logoutOfAll];
-		//	break;			
-			
+		//	break;
+
 	}
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
 }
@@ -125,7 +125,7 @@
 								delegate:self
 					   cancelButtonTitle:SHKLocalizedString(@"Cancel")
 					   otherButtonTitles:@"Logout",nil] autorelease] show];
-	
+
 	[SHK logoutOfAll];
 }
 

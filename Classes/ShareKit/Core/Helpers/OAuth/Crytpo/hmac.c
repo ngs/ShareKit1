@@ -25,7 +25,7 @@
 
 /*
  * Implementation of HMAC-SHA1. Adapted from example at http://tools.ietf.org/html/rfc2104
- 
+
  */
 
 #include "sha1.h"
@@ -64,7 +64,7 @@ for (i = 0; i < B; i++)
 	k_ipad[i] ^= 0x36;
 	k_opad[i] ^= 0x5c;
 	}
-	
+
 /*
 * perform inner SHA1
 */

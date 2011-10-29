@@ -33,15 +33,15 @@
 {
 	id delegate;
 	SEL validateSelector;
-	SEL saveSelector;	
-	
+	SEL saveSelector;
+
 	NSMutableArray *sections;
 	NSMutableDictionary *values;
-	
+
 	CGFloat labelWidth;
-	
+
 	UITextField *activeField;
-	
+
 	BOOL autoSelect;
 }
 

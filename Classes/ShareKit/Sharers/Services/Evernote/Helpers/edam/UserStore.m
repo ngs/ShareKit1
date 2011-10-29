@@ -192,7 +192,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -201,7 +201,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setUserId: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -209,7 +209,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setShardId: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -217,7 +217,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
         if (fieldType == TType_I32) {
           int fieldValue = [inProtocol readI32];
           [self setPrivilege: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -225,7 +225,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setUsername: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -480,7 +480,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -489,7 +489,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
         if (fieldType == TType_I64) {
           int64_t fieldValue = [inProtocol readI64];
           [self setCurrentTime: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -497,7 +497,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -505,7 +505,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
         if (fieldType == TType_I64) {
           int64_t fieldValue = [inProtocol readI64];
           [self setExpiration: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -515,7 +515,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
           [fieldValue read: inProtocol];
           [self setUser: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -525,7 +525,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
           [fieldValue read: inProtocol];
           [self setPublicUserInfo: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -756,7 +756,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -765,7 +765,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setClientName: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -773,7 +773,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
         if (fieldType == TType_I16) {
           int16_t fieldValue = [inProtocol readI16];
           [self setEdamVersionMajor: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -781,7 +781,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
         if (fieldType == TType_I16) {
           int16_t fieldValue = [inProtocol readI16];
           [self setEdamVersionMinor: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -917,7 +917,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -926,7 +926,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
         if (fieldType == TType_BOOL) {
           BOOL fieldValue = [inProtocol readBool];
           [self setSuccess: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -1175,7 +1175,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -1184,7 +1184,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setUsername: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -1192,7 +1192,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setPassword: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -1200,7 +1200,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setConsumerKey: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -1208,7 +1208,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setConsumerSecret: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -1444,7 +1444,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -1455,7 +1455,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -1465,7 +1465,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -1475,7 +1475,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -1619,7 +1619,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -1628,7 +1628,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -1837,7 +1837,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -1848,7 +1848,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -1858,7 +1858,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -1868,7 +1868,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -2012,7 +2012,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -2021,7 +2021,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -2230,7 +2230,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -2241,7 +2241,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -2251,7 +2251,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -2261,7 +2261,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -2405,7 +2405,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -2414,7 +2414,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setUsername: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -2664,7 +2664,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -2675,7 +2675,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -2685,7 +2685,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -2695,7 +2695,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -2705,7 +2705,7 @@ static int16_t EDAMEDAM_VERSION_MINOR = 16;
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;

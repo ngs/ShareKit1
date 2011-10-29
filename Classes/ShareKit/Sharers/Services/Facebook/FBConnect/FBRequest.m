@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *    http://www.apache.org/licenses/LICENSE-2.0
 
  * Unless required by applicable law or agreed to in writing, software
@@ -86,8 +86,8 @@ static const NSTimeInterval kTimeoutInterval = 180.0;
   if ([method isEqualToString:@"facebook.video.upload"]) {
     return @"http://api-video.facebook.com/restserver.php";
   }
-  
-  return _session.apiURL; 
+
+  return _session.apiURL;
 }
 
 - (NSString*)generateGetURL {
@@ -100,7 +100,7 @@ static const NSTimeInterval kTimeoutInterval = 180.0;
     [pairs addObject:[NSString stringWithFormat:@"%@=%@", key, value]];
   }
   NSString* params = [pairs componentsJoinedByString:@"&"];
-  
+
   return [NSString stringWithFormat:@"%@%@%@", _url, queryPrefix, params];
 }
 
@@ -109,7 +109,7 @@ static const NSTimeInterval kTimeoutInterval = 180.0;
 }
 
 - (NSString*)generateSig {
-  NSMutableString* joined = [NSMutableString string]; 
+  NSMutableString* joined = [NSMutableString string];
 
   NSArray* keys = [_params.allKeys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
   for (id obj in [keys objectEnumerator]) {
@@ -143,7 +143,7 @@ static const NSTimeInterval kTimeoutInterval = 180.0;
   NSString* endLine = [NSString stringWithFormat:@"\r\n--%@\r\n", kStringBoundary];
 
   [self utfAppendBody:body data:[NSString stringWithFormat:@"--%@\r\n", kStringBoundary]];
-  
+
   for (id key in [_params keyEnumerator]) {
     [self utfAppendBody:body
                    data:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", key]];
@@ -169,7 +169,7 @@ static const NSTimeInterval kTimeoutInterval = 180.0;
     }
     [self utfAppendBody:body data:endLine];
   }
-  
+
   FBLOG2(@"Sending %s", [body bytes]);
   return body;
 }
@@ -227,20 +227,20 @@ static const NSTimeInterval kTimeoutInterval = 180.0;
 
   NSString* url = _method ? _url : [self generateGetURL];
   NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]
-                                  cachePolicy:NSURLRequestReloadIgnoringLocalCacheData 
+                                  cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
                                   timeoutInterval:kTimeoutInterval];
   [request setValue:kUserAgent forHTTPHeaderField:@"User-Agent"];
-  
+
   if (_method) {
     [request setHTTPMethod:@"POST"];
-    
+
     NSString* contentType = [NSString
       stringWithFormat:@"multipart/form-data; boundary=%@", kStringBoundary];
     [request setValue:contentType forHTTPHeaderField:@"Content-Type"];
 
     [request setHTTPBody:[self generatePostBody]];
   }
-  
+
   _timestamp = [[NSDate date] retain];
   _connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
@@ -279,12 +279,12 @@ static const NSTimeInterval kTimeoutInterval = 180.0;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // NSURLConnectionDelegate
- 
+
 - (void)connection:(NSURLConnection*)connection didReceiveResponse:(NSURLResponse*)response {
   _responseText = [[NSMutableData alloc] init];
 
   NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-  if ([_delegate respondsToSelector:@selector(request:didReceiveResponse:)]) {    
+  if ([_delegate respondsToSelector:@selector(request:didReceiveResponse:)]) {
     [_delegate request:self didReceiveResponse:httpResponse];
   }
 }
@@ -300,14 +300,14 @@ static const NSTimeInterval kTimeoutInterval = 180.0;
 
 -(void)connectionDidFinishLoading:(NSURLConnection*)connection {
   [self handleResponseData:_responseText];
-  
+
   [_responseText release];
   _responseText = nil;
   [_connection release];
   _connection = nil;
 }
 
-- (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error {  
+- (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error {
   [self failWithError:error];
 
   [_responseText release];
@@ -348,9 +348,9 @@ static const NSTimeInterval kTimeoutInterval = 180.0;
       [_params setObject:@"1" forKey:@"ss"];
     }
   }
-  
+
   [_params setObject:[self generateSig] forKey:@"sig"];
-	
+
   [_session send:self];
 }
 
@@ -359,7 +359,7 @@ static const NSTimeInterval kTimeoutInterval = 180.0;
   _params = params
     ? [[NSMutableDictionary alloc] initWithDictionary:params]
     : [[NSMutableDictionary alloc] init];
-  
+
   [_session send:self];
 }
 

@@ -52,10 +52,10 @@
   as.delegate = as;
 	as.item = [[[SHKItem alloc] init] autorelease];
 	as.item.shareType = type;
-	
+
 	as.sharers = [NSMutableArray arrayWithCapacity:0];
 	NSArray *favoriteSharers = [SHK favoriteSharersForType:type];
-		
+
 	// Add buttons for each favorite sharer
 	id class;
 	for(NSString *sharerId in favoriteSharers)
@@ -67,14 +67,14 @@
 			[as.sharers addObject:sharerId];
 		}
 	}
-	
+
 	// Add More button
 	[as addButtonWithTitle:SHKLocalizedString(@"More...")];
-	
+
 	// Add Cancel button
 	[as addButtonWithTitle:SHKLocalizedString(@"Cancel")];
 	as.cancelButtonIndex = as.numberOfButtons -1;
-	
+
 	return [as autorelease];
 }
 
@@ -92,7 +92,7 @@
 	{
 		[NSClassFromString([sharers objectAtIndex:buttonIndex]) performSelector:@selector(shareItem:) withObject:item];
 	}
-	
+
 	// More
 	else if (buttonIndex == sharers.count)
 	{
@@ -101,7 +101,7 @@
 		[[SHK currentHelper] showViewController:shareMenu];
 		[shareMenu release];
 	}
-	
+
 	[super dismissWithClickedButtonIndex:buttonIndex animated:animated];
 }
 

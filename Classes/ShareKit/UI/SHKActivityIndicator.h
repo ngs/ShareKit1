@@ -32,7 +32,7 @@
 {
 	UILabel *centerMessageLabel;
 	UILabel *subMessageLabel;
-	
+
 	UIActivityIndicatorView *spinner;
 }
 

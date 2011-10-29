@@ -28,7 +28,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface ExampleShareImage : UIViewController 
+@interface ExampleShareImage : UIViewController
 {
 	UIImageView *imageView;
 }

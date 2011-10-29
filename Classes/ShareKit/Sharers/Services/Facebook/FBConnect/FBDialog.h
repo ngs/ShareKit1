@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *    http://www.apache.org/licenses/LICENSE-2.0
 
  * Unless required by applicable law or agreed to in writing, software
@@ -125,7 +125,7 @@
 /**
  * Asks if a link touched by a user should be opened in an external browser.
  *
- * If a user touches a link, the default behavior is to open the link in the Safari browser, 
+ * If a user touches a link, the default behavior is to open the link in the Safari browser,
  * which will cause your app to quit.  You may want to prevent this from happening, open the link
  * in your own internal browser, or perhaps warn the user that they are about to leave your app.
  * If so, implement this method on your delegate and return NO.  If you warn the user, you

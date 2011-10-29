@@ -28,7 +28,7 @@
 #import <Foundation/Foundation.h>
 #import "SHKFormFieldCell.h"
 
-@interface SHKCustomFormFieldCell : SHKFormFieldCell 
+@interface SHKCustomFormFieldCell : SHKFormFieldCell
 {
 
 }

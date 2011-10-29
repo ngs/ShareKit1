@@ -66,38 +66,38 @@ static NSString * const kTumblrWriteURL = @"https://www.tumblr.com/api/write";
 	// Display an activity indicator
 	if (!quiet)
 		[[SHKActivityIndicator currentIndicator] displayActivity:SHKLocalizedString(@"Logging In...")];
-	
-	
+
+
 	// Authorize the user through the server
 	NSDictionary *formValues = [form formValues];
-	
+
 	NSString *params = [NSMutableString stringWithFormat:@"email=%@&password=%@",
                         SHKEncode([formValues objectForKey:@"email"]),
                         SHKEncode([formValues objectForKey:@"password"])
                         ];
-	
+
 	self.request = [[[SHKRequest alloc] initWithURL:[NSURL URLWithString:kTumblrAuthenticationURL]
                                              params:params
                                            delegate:self
                                  isFinishedSelector:@selector(authFinished:)
                                              method:@"POST"
                                           autostart:YES] autorelease];
-	
+
 	self.pendingForm = form;
 }
 
-- (void)authFinished:(SHKRequest *)aRequest{		
+- (void)authFinished:(SHKRequest *)aRequest{
 	[[SHKActivityIndicator currentIndicator] hide];
 	if (aRequest.success)
 		[pendingForm saveForm];
-	
+
 	else {
         NSString *errorMessage = nil;
         if (aRequest.response.statusCode == 403)
             errorMessage = SHKLocalizedString(@"Invalid email or password.");
         else
             errorMessage = SHKLocalizedString(@"The service encountered an error. Please try again later.");
-        
+
 		[[[[UIAlertView alloc] initWithTitle:SHKLocalizedString(@"Login Error")
                                      message:errorMessage
                                     delegate:nil
@@ -117,7 +117,7 @@ static NSString * const kTumblrWriteURL = @"https://www.tumblr.com/api/write";
 			[SHKFormFieldSettings label:SHKLocalizedString(@"Password")
                                     key:@"password"
                                    type:SHKFormFieldTypePassword
-                                  start:nil],			
+                                  start:nil],
 			nil];
 }
 
@@ -148,7 +148,7 @@ static NSString * const kTumblrWriteURL = @"https://www.tumblr.com/api/write";
         [baseArray insertObject:[SHKFormFieldSettings label:SHKLocalizedString(@"Caption")
                                                         key:@"caption"
                                                        type:SHKFormFieldTypeText
-                                                      start:nil] 
+                                                      start:nil]
                         atIndex:0];
     }else{
         [baseArray insertObject:[SHKFormFieldSettings label:SHKLocalizedString(@"Title")
@@ -189,39 +189,39 @@ static NSString * const kTumblrWriteURL = @"https://www.tumblr.com/api/write";
 #pragma mark -
 #pragma mark Share API Methods
 
-- (BOOL)send{		
+- (BOOL)send{
 	if ([self validateItem]) {
         if([item shareType] == SHKShareTypeText || [item shareType] == SHKShareTypeURL){
-            NSMutableString *params = [NSMutableString stringWithFormat:@"email=%@&password=%@", 
+            NSMutableString *params = [NSMutableString stringWithFormat:@"email=%@&password=%@",
                                        SHKEncode([self getAuthValueForKey:@"email"]),
                                        SHKEncode([self getAuthValueForKey:@"password"])];
-            
+
             //set send to twitter param
             if([item customBoolForSwitchKey:@"twitter"]){
                 [params appendFormat:@"&send-to-twitter=auto"];
             }else{
                 [params appendFormat:@"&send-to-twitter=no"];
             }
-            
+
             //set tags param
             NSString *tags = [item tags];
             if(tags){
                 [params appendFormat:@"&tags=%@",[item tags]];
             }
-            
+
             //set slug param
             NSString *slug = [item customValueForKey:@"slug"];
             if(slug){
                 [params appendFormat:@"&slug=%@", slug];
             }
-            
+
             //set private param
             if([item customBoolForSwitchKey:@"private"]){
                 [params appendFormat:@"&private=1"];
             }else{
                 [params appendFormat:@"&private=0"];
             }
-            
+
             //set type param
             if ([item shareType] == SHKShareTypeURL){
                 if ([item customValueForKey:@"iframe"]){
@@ -252,7 +252,7 @@ static NSString * const kTumblrWriteURL = @"https://www.tumblr.com/api/write";
                                                   autostart:YES] autorelease];
         }
         else if([item shareType] == SHKShareTypeImage){
-            
+
             NSData *imageData = UIImageJPEGRepresentation([item image], 0.9);
             NSMutableURLRequest *aRequest = [[[NSMutableURLRequest alloc] init] autorelease];
             [aRequest setURL:[NSURL URLWithString:kTumblrWriteURL]];
@@ -261,46 +261,46 @@ static NSString * const kTumblrWriteURL = @"https://www.tumblr.com/api/write";
             //NSString *boundary = [NSString stringWithString:@"---------------------------14737809831466499882746641449"];
             NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
             [aRequest addValue:contentType forHTTPHeaderField: @"Content-Type"];
-            
+
             /*
              now lets create the body of the post
              */
             NSMutableData *body = [NSMutableData data];
-            [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] 
+            [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary]
                               dataUsingEncoding:NSUTF8StringEncoding]];
             [body appendData:[@"Content-Disposition: form-data; name=\"email\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
             [body appendData:[[self getAuthValueForKey:@"email"] dataUsingEncoding:NSUTF8StringEncoding]];
-            
-            [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] 
+
+            [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary]
                               dataUsingEncoding:NSUTF8StringEncoding]];
             [body appendData:[@"Content-Disposition: form-data; name=\"password\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
             [body appendData:[[self getAuthValueForKey:@"password"] dataUsingEncoding:NSUTF8StringEncoding]];
-            
-            [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] 
+
+            [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary]
                               dataUsingEncoding:NSUTF8StringEncoding]];
             [body appendData:[@"Content-Disposition: form-data; name=\"type\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
             [body appendData:[@"photo" dataUsingEncoding:NSUTF8StringEncoding]];
 
             if([item tags]){
-                [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] 
+                [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary]
                                   dataUsingEncoding:NSUTF8StringEncoding]];
                 [body appendData:[@"Content-Disposition: form-data; name=\"tags\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
                 [body appendData:[[item tags] dataUsingEncoding:NSUTF8StringEncoding]];
             }
             if([item customValueForKey:@"caption"]){
-                [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] 
+                [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary]
                                   dataUsingEncoding:NSUTF8StringEncoding]];
                 [body appendData:[@"Content-Disposition: form-data; name=\"caption\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
                 [body appendData:[[item customValueForKey:@"caption"] dataUsingEncoding:NSUTF8StringEncoding]];
 
             }
             if([item customValueForKey:@"slug"]){
-                [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] 
+                [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary]
                                   dataUsingEncoding:NSUTF8StringEncoding]];
                 [body appendData:[@"Content-Disposition: form-data; name=\"slug\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
                 [body appendData:[[item customValueForKey:@"slug"] dataUsingEncoding:NSUTF8StringEncoding]];
             }
-            [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] 
+            [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary]
                               dataUsingEncoding:NSUTF8StringEncoding]];
             if([item customBoolForSwitchKey:@"private"]){
                 [body appendData:[@"Content-Disposition: form-data; name=\"private\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
@@ -309,8 +309,8 @@ static NSString * const kTumblrWriteURL = @"https://www.tumblr.com/api/write";
                 [body appendData:[@"Content-Disposition: form-data; name=\"private\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
                 [body appendData:[@"0" dataUsingEncoding:NSUTF8StringEncoding]];
             }
-            
-            [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] 
+
+            [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary]
                               dataUsingEncoding:NSUTF8StringEncoding]];
             if([item customBoolForSwitchKey:@"twitter"]){
                 [body appendData:[@"Content-Disposition: form-data; name=\"twitter\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
@@ -319,25 +319,25 @@ static NSString * const kTumblrWriteURL = @"https://www.tumblr.com/api/write";
                 [body appendData:[@"Content-Disposition: form-data; name=\"twitter\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
                 [body appendData:[@"no" dataUsingEncoding:NSUTF8StringEncoding]];
             }
-            
+
             [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
             [body appendData:[@"Content-Disposition: form-data; name=\"data\"; filename=\"upload.jpg\"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
             [body appendData:[@"Content-Transfer-Encoding: image/jpg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
             [body appendData:imageData];
             [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-            
+
             // setting the body of the post to the reqeust
             [aRequest setHTTPBody:body];
             [NSURLConnection connectionWithRequest:aRequest delegate:self];
         }
-                
-		
+
+
 		// Notify delegate
 		[self sendDidStart];
-		
+
 		return YES;
 	}
-	
+
 	return NO;
 }
 
@@ -351,11 +351,11 @@ static NSString * const kTumblrWriteURL = @"https://www.tumblr.com/api/write";
             [self sendDidFailWithError:[SHK error:SHKLocalizedString(@"The service encountered an error. Please try again later.")]];
             return;
         }
-        
+
 		[self sendDidFailWithError:[SHK error:SHKLocalizedString(@"There was an error sending your post to Tumblr.")]];
 		return;
 	}
-    
+
 	[self sendDidFinish];
 }
 
@@ -364,7 +364,7 @@ static NSString * const kTumblrWriteURL = @"https://www.tumblr.com/api/write";
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)theResponse {
     [response release];
 	response = [theResponse retain];
-	
+
 	[data setLength:0];
 }
 
@@ -377,7 +377,7 @@ static NSString * const kTumblrWriteURL = @"https://www.tumblr.com/api/write";
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    
+
 	[self finish];
 }
 
@@ -395,7 +395,7 @@ static NSString * const kTumblrWriteURL = @"https://www.tumblr.com/api/write";
         }
         [self sendDidFailWithError:[SHK error:SHKLocalizedString(@"There was a sending your post to Tumblr.")]];
     }
-    
+
 }
 
 @end

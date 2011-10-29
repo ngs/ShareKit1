@@ -40,20 +40,20 @@
 		request = [aRequest retain];
 		delegate = aDelegate;
 		didFinishSelector = finishSelector;
-		didFailSelector = failSelector;	
+		didFailSelector = failSelector;
 	}
 	return self;
 }
 
 - (void)start
-{    
+{
     [request prepare];
-	
+
 	if (connection)
 		[connection release];
-	
+
 	connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    
+
 	if (connection)
 	{
 		if (responseData)
@@ -115,7 +115,7 @@
 	[delegate performSelector:didFailSelector
 				   withObject:ticket
 				   withObject:error];
-	
+
 	[ticket release];
 }
 
@@ -127,7 +127,7 @@
 	[delegate performSelector:didFinishSelector
 				   withObject:ticket
 				   withObject:responseData];
-	
+
 	[ticket release];
 }
 

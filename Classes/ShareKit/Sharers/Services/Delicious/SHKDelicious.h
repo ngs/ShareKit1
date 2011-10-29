@@ -28,7 +28,7 @@
 #import <Foundation/Foundation.h>
 #import "SHKOAuthSharer.h"
 
-@interface SHKDelicious : SHKOAuthSharer 
+@interface SHKDelicious : SHKOAuthSharer
 {
 
 }

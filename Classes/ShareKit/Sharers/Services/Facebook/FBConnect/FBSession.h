@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *    http://www.apache.org/licenses/LICENSE-2.0
 
  * Unless required by applicable law or agreed to in writing, software
@@ -20,7 +20,7 @@
 @class FBRequest;
 
 /**
- * An FBSession represents a single user's authenticated session for a Facebook application.  
+ * An FBSession represents a single user's authenticated session for a Facebook application.
  *
  * To create a session, you must use the session key of your application (which can
  * be found on the Facebook developer website).  You may then use the login dialog to ask
@@ -155,9 +155,9 @@
 * Removes a delegate from the list of delegates.
 */
 - (void)removeDelegate:(id<FBSessionDelegate>)delegate;
-  
-  
-  
+
+
+
 /**
  * Begins a session for a user with a given key and secret.
  */

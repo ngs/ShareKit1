@@ -27,7 +27,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum 
+typedef enum
 {
 	SHKFormFieldTypeText,
 	SHKFormFieldTypePassword,
@@ -37,11 +37,11 @@ typedef enum
 #define SHKFormFieldSwitchOff @"0"
 #define SHKFormFieldSwitchOn @"1"
 
-@interface SHKFormFieldSettings : NSObject 
+@interface SHKFormFieldSettings : NSObject
 {
 	NSString *label;
 	NSString *key;
-	SHKFormFieldType type;	
+	SHKFormFieldType type;
 	NSString *start;
 }
 

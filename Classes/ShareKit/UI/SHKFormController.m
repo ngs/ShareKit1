@@ -32,20 +32,20 @@
 
 @implementation SHKFormController
 
-@synthesize delegate, validateSelector, saveSelector; 
+@synthesize delegate, validateSelector, saveSelector;
 @synthesize sections, values;
 @synthesize labelWidth;
 @synthesize activeField;
 @synthesize autoSelect;
 
 
-- (void)dealloc 
+- (void)dealloc
 {
 	[delegate release];
 	[sections release];
 	[values release];
 	[activeField release];
-	
+
     [super dealloc];
 }
 
@@ -58,16 +58,16 @@
 	if (self = [super initWithStyle:style])
 	{
 		self.title = barTitle;
-		
+
 		self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
 																							  target:self
 																							  action:@selector(cancel)];
-		
+
 		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:rightButtonTitle
 																				  style:UIBarButtonItemStyleDone
 																				 target:self
 																				 action:@selector(validateForm)];
-		
+
 		self.values = [NSMutableDictionary dictionaryWithCapacity:0];
 	}
 	return self;
@@ -77,37 +77,37 @@
 {
 	if (sections == nil)
 		self.sections = [NSMutableArray arrayWithCapacity:0];
-	
+
 	NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
 	[dict setObject:fields forKey:@"rows"];
-	
+
 	if (header)
 		[dict setObject:header forKey:@"header"];
-		
+
 	if (footer)
 		[dict setObject:footer forKey:@"footer"];
-	
-	
+
+
 	[sections addObject:dict];
-	
+
 	// Find the max length of the labels so we can use this value to align the left side of all form fields
 	// TODO - should probably save this per section for flexibility
 	if (sections.count == 1)
 	{
 		CGFloat newWidth = 0;
 		CGSize size;
-		
+
 		for (SHKFormFieldSettings *field in fields)
 		{
 			// only use text field rows
 			if (field.type != SHKFormFieldTypeText && field.type != SHKFormFieldTypePassword)
 				continue;
-			
+
 			size = [field.label sizeWithFont:[UIFont boldSystemFontOfSize:17]];
 			if (size.width > newWidth)
 				newWidth = size.width;
 		}
-		
+
 		self.labelWidth = newWidth;
 	}
 }
@@ -117,7 +117,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
-	
+
 	if (autoSelect)
 		[self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
 }
@@ -125,7 +125,7 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
 	[super viewDidDisappear:animated];
-	
+
 	// Remove the SHK view wrapper from the window
 	[[SHK currentHelper] viewWasDismissed];
 }
@@ -133,8 +133,8 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
-	
-	if (SHKFormBgColorRed != -1)		
+
+	if (SHKFormBgColorRed != -1)
 		self.tableView.backgroundColor = [UIColor colorWithRed:SHKFormBgColorRed/255 green:SHKFormBgColorGreen/255 blue:SHKFormBgColorBlue/255 alpha:1];
 }
 
@@ -142,44 +142,44 @@
 #pragma mark -
 #pragma mark Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return sections.count;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [[[sections objectAtIndex:section] objectForKey:@"rows"] count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    
+
     SHKCustomFormFieldCell *cell = (SHKCustomFormFieldCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
 	{
         cell = [[[SHKCustomFormFieldCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 		cell.form = self;
-		
-		if (SHKFormFontColorRed != -1)		
+
+		if (SHKFormFontColorRed != -1)
 			cell.textLabel.textColor = [UIColor colorWithRed:SHKFormFontColorRed/255 green:SHKFormFontColorGreen/255 blue:SHKFormFontColorBlue/255 alpha:1];
 	}
-	
+
 	// Since we are reusing table cells, make sure to save any existing values before overwriting
 	if (cell.settings.key != nil && [cell getValue])
 		[values setObject:[cell getValue] forKey:cell.settings.key];
-    
+
 	cell.settings = [self rowSettingsForIndexPath:indexPath];
 	cell.labelWidth = labelWidth;
 	cell.textLabel.text = cell.settings.label;
-	
+
 	NSString *value = [values objectForKey:cell.settings.key];
 	if (value == nil && cell.settings.start != nil)
 		value = cell.settings.start;
-	
+
 	[cell setValue:value];
-	
+
     return cell;
 }
 
@@ -201,7 +201,7 @@
 
 #pragma mark -
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
 }
@@ -212,7 +212,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-	[self validateForm];	
+	[self validateForm];
 	return YES;
 }
 
@@ -253,35 +253,35 @@
 {
 	return [self formValuesForSection:0];
 }
-			
+
 - (NSMutableDictionary *)formValuesForSection:(int)section
 {
 	// go through all form fields and get values
 	NSMutableDictionary *formValues = [NSMutableDictionary dictionaryWithCapacity:0];
-	
+
 	SHKCustomFormFieldCell *cell;
 	int row = 0;
 	NSArray *fields = [[sections objectAtIndex:section] objectForKey:@"rows"];
-	
+
 	for(SHKFormFieldSettings *field in fields)
-	{		
+	{
 		cell = (SHKCustomFormFieldCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
-		
-		// Use text field if visible first		
+
+		// Use text field if visible first
 		if ([cell.settings.key isEqualToString:field.key] && [cell getValue] != nil)
 			[formValues setObject:[cell getValue] forKey:field.key];
-		
+
 		// If field is not visible, use cached value
 		else if ([values objectForKey:field.key] != nil)
 			[formValues setObject:[values objectForKey:field.key] forKey:field.key];
-			
+
 		row++;
 	}
-	
-	return formValues;	
+
+	return formValues;
 }
-		 
-		 
+
+
 
 
 @end

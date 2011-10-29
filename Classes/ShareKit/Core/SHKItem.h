@@ -27,7 +27,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum 
+typedef enum
 {
 	SHKShareTypeUndefined,
 	SHKShareTypeURL,
@@ -37,22 +37,22 @@ typedef enum
 } SHKShareType;
 
 
-@interface SHKItem : NSObject 
-{	
+@interface SHKItem : NSObject
+{
 	SHKShareType shareType;
-	
+
 	NSURL *URL;
-	
+
 	UIImage *image;
-	
+
 	NSString *title;
 	NSString *text;
 	NSString *tags;
-	
+
 	NSData *data;
 	NSString *mimeType;
 	NSString *filename;
-	
+
 	@private
 		NSMutableDictionary *custom;
 }

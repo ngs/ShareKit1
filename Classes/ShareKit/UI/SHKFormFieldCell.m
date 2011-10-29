@@ -42,7 +42,7 @@
 - (void)dealloc
 {
 	[settings release];
-	[textField release];	
+	[textField release];
 	[toggle release];
 	[tmpValue release];
 	[super dealloc];
@@ -62,61 +62,61 @@
 		textField.delegate = form;
 		[self.contentView addSubview:textField];
 		[textField release];
-		
+
 		[self setValue:tmpValue];
 	}
 	return textField;
 }
 
-- (void)layoutSubviews 
+- (void)layoutSubviews
 {
-	[super layoutSubviews];	
-	
+	[super layoutSubviews];
+
 	if (settings.type == SHKFormFieldTypeText || settings.type == SHKFormFieldTypePassword)
 	{
 		self.textField.secureTextEntry = settings.type == SHKFormFieldTypePassword;
 		self.textField.autocorrectionType = UITextAutocorrectionTypeNo;
 		self.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-		
-		textField.frame = CGRectMake(labelWidth + SHK_FORM_CELL_PAD_LEFT, 
+
+		textField.frame = CGRectMake(labelWidth + SHK_FORM_CELL_PAD_LEFT,
 									 2 + round(self.contentView.bounds.size.height/2 - textField.bounds.size.height/2),
 									 self.contentView.bounds.size.width - SHK_FORM_CELL_PAD_RIGHT - SHK_FORM_CELL_PAD_LEFT - labelWidth,
 									 textField.bounds.size.height);
-		
+
 		if (toggle != nil)
 			[toggle removeFromSuperview];
 	}
-	
+
 	else if (settings.type == SHKFormFieldTypeSwitch)
 	{
 		if (toggle == nil)
 		{
-			self.toggle = [[UISwitch alloc] initWithFrame:CGRectZero];	
+			self.toggle = [[UISwitch alloc] initWithFrame:CGRectZero];
 			[self.contentView addSubview:toggle];
 			[self setValue:tmpValue];
 			[toggle release];
 		}
-		
+
 		toggle.frame = CGRectMake(self.contentView.bounds.size.width-toggle.bounds.size.width-SHK_FORM_CELL_PAD_RIGHT,
 								  round(self.contentView.bounds.size.height/2-toggle.bounds.size.height/2),
 								  toggle.bounds.size.width,
 								  toggle.bounds.size.height);
-		
+
 		if (textField != nil)
 			[textField removeFromSuperview];
 	}
-	
+
 	[self.contentView bringSubviewToFront:textField];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated 
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
 	// don't actually select the row
 	//[super setSelected:selected animated:animated];
-	
+
 	if (selected)
 		[textField becomeFirstResponder];
-	
+
 	else
 		[textField resignFirstResponder];
 }
@@ -128,19 +128,19 @@
 {
 	[settings release];
 	settings = [s retain];
-	[self setNeedsLayout];	
+	[self setNeedsLayout];
 }
 
 - (void)setValue:(NSString *)value
 {
 	self.tmpValue = value; // used to hold onto the value in case the form field element is created after this is set
-	
-	switch (settings.type) 
+
+	switch (settings.type)
 	{
 		case SHKFormFieldTypeSwitch:
 			[toggle setOn:[value isEqualToString:SHKFormFieldSwitchOn] animated:NO];
 			break;
-			
+
 		case SHKFormFieldTypeText:
 		case SHKFormFieldTypePassword:
 			textField.text = value;
@@ -151,19 +151,19 @@
 - (NSString *)getValue
 {
   NSString *returnValue = nil;
-	
-  switch (settings.type) 
+
+  switch (settings.type)
 	{
 		case SHKFormFieldTypeSwitch:
 			returnValue = toggle.on ? SHKFormFieldSwitchOn : SHKFormFieldSwitchOff;
 			break;
-    
+
     case SHKFormFieldTypeText:
     case SHKFormFieldTypePassword:
       returnValue = textField.text;
       break;
 	}
-	
+
 	return returnValue;
 }
 

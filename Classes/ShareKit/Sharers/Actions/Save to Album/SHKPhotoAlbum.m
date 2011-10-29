@@ -67,13 +67,13 @@
 #pragma mark Share API Methods
 
 - (BOOL)send
-{	
+{
 	if (item.shareType == SHKShareTypeImage)
 		UIImageWriteToSavedPhotosAlbum(item.image, nil, nil, nil);
-	
+
 	// Notify user
 	[[SHKActivityIndicator currentIndicator] displayCompleted:SHKLocalizedString(@"Saved!")];
-	
+
 	return YES;
 }
 

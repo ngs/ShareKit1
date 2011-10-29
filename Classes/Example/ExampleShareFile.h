@@ -28,7 +28,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface ExampleShareFile : UIViewController <UIWebViewDelegate> 
+@interface ExampleShareFile : UIViewController <UIWebViewDelegate>
 {
 	UIWebView *webView;
 }

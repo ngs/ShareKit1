@@ -83,25 +83,25 @@
 #pragma mark Authentication
 
 - (BOOL)isAuthorized
-{	
+{
 	if (session == nil)
 	{
-		
+
 		if(!SHKFacebookUseSessionProxy){
 			self.session = [FBSession sessionForApplication:SHKFacebookKey
 													 secret:SHKFacebookSecret
 												   delegate:self];
-			
+
 		}else {
 			self.session = [FBSession sessionForApplication:SHKFacebookKey
 											getSessionProxy:SHKFacebookSessionProxyURL
 												   delegate:self];
 		}
 
-		
+
 		return [session resume];
 	}
-	
+
 	return [session isConnected];
 }
 
@@ -113,19 +113,19 @@
 }
 
 - (void)authFinished:(SHKRequest *)request
-{		
-	
+{
+
 }
 
 + (void)logout
 {
-	FBSession *fbSession; 
-	
+	FBSession *fbSession;
+
 	if(!SHKFacebookUseSessionProxy){
 		fbSession = [FBSession sessionForApplication:SHKFacebookKey
 												 secret:SHKFacebookSecret
 											   delegate:nil];
-		
+
 	}else {
 		fbSession = [FBSession sessionForApplication:SHKFacebookKey
 										getSessionProxy:SHKFacebookSessionProxyURL
@@ -139,18 +139,18 @@
 #pragma mark Share API Methods
 
 - (BOOL)send
-{			
+{
 	if (item.shareType == SHKShareTypeURL)
 	{
 		self.pendingFacebookAction = SHKFacebookPendingStatus;
-		
+
 		SHKFBStreamDialog* dialog = [[[SHKFBStreamDialog alloc] init] autorelease];
 		dialog.delegate = self;
 		dialog.userMessagePrompt = SHKLocalizedString(@"Enter your message:");
 
     // http://developers.facebook.com/docs/reference/dialogs/feed/
     NSArray *keys = [@"message picture source caption description properties actions" componentsSeparatedByString:@" "];
-    
+
 		NSMutableString *additionnalData = [NSMutableString string];
     for (NSString *key in keys) {
       if([item customValueForKey:key]) {
@@ -202,13 +202,13 @@
 							  SHKEncode(SHKMyAppName),
 							  SHKEncode(SHKMyAppURL)];
 		[dialog show];
-		
+
 	}
-	
+
 	else if (item.shareType == SHKShareTypeText)
 	{
 		self.pendingFacebookAction = SHKFacebookPendingStatus;
-		
+
 		SHKFBStreamDialog* dialog = [[[SHKFBStreamDialog alloc] init] autorelease];
 		dialog.delegate = self;
 		dialog.userMessagePrompt = @"Enter your message:";
@@ -217,19 +217,19 @@
 							  SHKEncode(SHKMyAppName),
 							  SHKEncode(SHKMyAppURL)];
 		[dialog show];
-		
+
 	}
-	
+
 	else if (item.shareType == SHKShareTypeImage)
-	{		
+	{
 		self.pendingFacebookAction = SHKFacebookPendingImage;
-		
+
 		FBPermissionDialog* dialog = [[[FBPermissionDialog alloc] init] autorelease];
 		dialog.delegate = self;
 		dialog.permission = @"photo_upload";
-		[dialog show];		
+		[dialog show];
 	}
-	
+
 	return YES;
 }
 
@@ -246,7 +246,7 @@
 {
 	if (pendingFacebookAction == SHKFacebookPendingImage)
 		[self sendImage];
-	
+
 	// TODO - the dialog has a SKIP button.  Skipping still calls this even though it doesn't appear to post.
 	//		- need to intercept the skip and handle it as a cancel?
 	else if (pendingFacebookAction == SHKFacebookPendingStatus)
@@ -267,7 +267,7 @@
 
 #pragma mark FBSessionDelegate methods
 
-- (void)session:(FBSession*)session didLogin:(FBUID)uid 
+- (void)session:(FBSession*)session didLogin:(FBUID)uid
 {
 	// Try to share again
 	if (pendingFacebookAction == SHKFacebookPendingLogin)
@@ -277,7 +277,7 @@
 	}
 }
 
-- (void)session:(FBSession*)session willLogout:(FBUID)uid 
+- (void)session:(FBSession*)session willLogout:(FBUID)uid
 {
 	// Not handling this
 }
@@ -285,16 +285,16 @@
 
 #pragma mark FBRequestDelegate methods
 
-- (void)request:(FBRequest*)aRequest didLoad:(id)result 
+- (void)request:(FBRequest*)aRequest didLoad:(id)result
 {
-	if ([aRequest.method isEqualToString:@"facebook.photos.upload"]) 
+	if ([aRequest.method isEqualToString:@"facebook.photos.upload"])
 	{
 		// PID is in [result objectForKey:@"pid"];
 		[self sendDidFinish];
 	}
 }
 
-- (void)request:(FBRequest*)aRequest didFailWithError:(NSError*)error 
+- (void)request:(FBRequest*)aRequest didFailWithError:(NSError*)error
 {
 	[self sendDidFailWithError:error];
 }

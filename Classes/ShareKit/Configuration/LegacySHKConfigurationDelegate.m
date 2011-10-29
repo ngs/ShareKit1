@@ -34,48 +34,48 @@
 {
     if ((self = [super init])) {
 		configuration = [[NSDictionary alloc] initWithObjectsAndKeys:
-						 SHKMyAppName, @"appName", 
-						 SHKMyAppURL, @"appURL", 
-						 SHKDeliciousConsumerKey, @"deliciousConsumerKey", 
-						 SHKDeliciousSecretKey, @"deliciousSecretKey", 
-						 [NSNumber numberWithBool:SHKFacebookUseSessionProxy], @"facebookUseSessionProxy", 
-						 SHKFacebookKey, @"facebookKey", 
-						 SHKFacebookSecret, @"facebookSecret", 
-						 SHKFacebookSessionProxyURL, @"facebookSessionProxyURL", 
-						 SHKReadItLaterKey, @"readItLaterKey", 
-						 SHKTwitterConsumerKey, @"twitterConsumerKey", 
-						 SHKTwitterSecret, @"twitterSecret", 
-						 SHKTwitterCallbackUrl, @"twitterCallbackUrl", 
-						 [NSNumber numberWithInt:SHKTwitterUseXAuth], @"twitterUseXAuth", 
-						 SHKTwitterUsername, @"twitterUsername", 
-						 SHKBitLyLogin, @"bitLyLogin", 
-						 SHKBitLyKey, @"bitLyKey", 
-						 [NSNumber numberWithInt:SHKShareMenuAlphabeticalOrder], @"shareMenuAlphabeticalOrder", 
-						 [NSNumber numberWithInt:SHKSharedWithSignature], @"sharedWithSignature", 
-						 SHKBarStyle, @"barStyle", 
-						 [NSNumber numberWithInt:SHKBarTintColorRed], @"barTintColorRed", 
-						 [NSNumber numberWithInt:SHKBarTintColorGreen], @"barTintColorGreen", 
-						 [NSNumber numberWithInt:SHKBarTintColorBlue], @"barTintColorBlue", 
-						 [NSNumber numberWithInt:SHKFormFontColorRed], @"formFontColorRed", 
-						 [NSNumber numberWithInt:SHKFormFontColorGreen], @"formFontColorGreen", 
-						 [NSNumber numberWithInt:SHKFormFontColorBlue], @"formFontColorBlue", 
-						 [NSNumber numberWithInt:SHKFormBgColorRed], @"formBgColorRed", 
-						 [NSNumber numberWithInt:SHKFormBgColorGreen], @"formBgColorGreen", 
-						 [NSNumber numberWithInt:SHKFormBgColorBlue], @"formBgColorBlue", 
-						 SHKModalPresentationStyle, @"modalPresentationStyle", 
-						 SHKModalTransitionStyle, @"modalTransitionStyle", 
-						 SHKDebugShowLogs, @"debugShowLogs", 
-						 [NSNumber numberWithInt:SHK_MAX_FAV_COUNT], @"maxFavCount", 
-						 SHK_FAVS_PREFIX_KEY, @"favsPrefixKey", 
-						 SHK_AUTH_PREFIX, @"authPrefix", 
+						 SHKMyAppName, @"appName",
+						 SHKMyAppURL, @"appURL",
+						 SHKDeliciousConsumerKey, @"deliciousConsumerKey",
+						 SHKDeliciousSecretKey, @"deliciousSecretKey",
+						 [NSNumber numberWithBool:SHKFacebookUseSessionProxy], @"facebookUseSessionProxy",
+						 SHKFacebookKey, @"facebookKey",
+						 SHKFacebookSecret, @"facebookSecret",
+						 SHKFacebookSessionProxyURL, @"facebookSessionProxyURL",
+						 SHKReadItLaterKey, @"readItLaterKey",
+						 SHKTwitterConsumerKey, @"twitterConsumerKey",
+						 SHKTwitterSecret, @"twitterSecret",
+						 SHKTwitterCallbackUrl, @"twitterCallbackUrl",
+						 [NSNumber numberWithInt:SHKTwitterUseXAuth], @"twitterUseXAuth",
+						 SHKTwitterUsername, @"twitterUsername",
+						 SHKBitLyLogin, @"bitLyLogin",
+						 SHKBitLyKey, @"bitLyKey",
+						 [NSNumber numberWithInt:SHKShareMenuAlphabeticalOrder], @"shareMenuAlphabeticalOrder",
+						 [NSNumber numberWithInt:SHKSharedWithSignature], @"sharedWithSignature",
+						 SHKBarStyle, @"barStyle",
+						 [NSNumber numberWithInt:SHKBarTintColorRed], @"barTintColorRed",
+						 [NSNumber numberWithInt:SHKBarTintColorGreen], @"barTintColorGreen",
+						 [NSNumber numberWithInt:SHKBarTintColorBlue], @"barTintColorBlue",
+						 [NSNumber numberWithInt:SHKFormFontColorRed], @"formFontColorRed",
+						 [NSNumber numberWithInt:SHKFormFontColorGreen], @"formFontColorGreen",
+						 [NSNumber numberWithInt:SHKFormFontColorBlue], @"formFontColorBlue",
+						 [NSNumber numberWithInt:SHKFormBgColorRed], @"formBgColorRed",
+						 [NSNumber numberWithInt:SHKFormBgColorGreen], @"formBgColorGreen",
+						 [NSNumber numberWithInt:SHKFormBgColorBlue], @"formBgColorBlue",
+						 SHKModalPresentationStyle, @"modalPresentationStyle",
+						 SHKModalTransitionStyle, @"modalTransitionStyle",
+						 SHKDebugShowLogs, @"debugShowLogs",
+						 [NSNumber numberWithInt:SHK_MAX_FAV_COUNT], @"maxFavCount",
+						 SHK_FAVS_PREFIX_KEY, @"favsPrefixKey",
+						 SHK_AUTH_PREFIX, @"authPrefix",
 						 nil];
 	}
-	
+
 	if(SHKDebugShowLogs) {
 		SHKLog(@"Legacy configuration: %@", configuration);
 	}
 
-    return self;	
+    return self;
 }
 
 - (BOOL)respondsToSelector:(SEL)aSelector

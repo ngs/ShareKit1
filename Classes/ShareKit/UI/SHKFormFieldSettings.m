@@ -37,7 +37,7 @@
 	[label release];
 	[key release];
 	[start release];
-	
+
 	[super dealloc];
 }
 
@@ -46,7 +46,7 @@
 	SHKFormFieldSettings *settings = [[SHKFormFieldSettings alloc] init];
 	settings.label = l;
 	settings.key = k;
-	settings.type = t;	
+	settings.type = t;
 	settings.start = s;
 	return [settings autorelease];
 }

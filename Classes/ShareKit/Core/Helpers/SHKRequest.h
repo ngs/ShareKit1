@@ -28,21 +28,21 @@
 #import <Foundation/Foundation.h>
 
 
-@interface SHKRequest : NSObject 
+@interface SHKRequest : NSObject
 {
 	NSURL *url;
 	NSString *params;
 	NSString *method;
 	NSDictionary *headerFields;
-	
+
 	id delegate;
 	SEL isFinishedSelector;
-	
+
 	NSURLConnection *connection;
-	
+
 	NSHTTPURLResponse *response;
 	NSDictionary *headers;
-	
+
 	NSMutableData *data;
 	NSString *result;
 	BOOL success;

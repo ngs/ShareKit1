@@ -30,17 +30,17 @@
 
 @class SHKFormController;
 
-@interface SHKFormFieldCell : UITableViewCell 
+@interface SHKFormFieldCell : UITableViewCell
 {
 	SHKFormFieldSettings *settings;
-	
+
 	CGFloat labelWidth;
-	
+
 	UITextField *textField;
 	UISwitch *toggle;
-	
+
 	NSString *tmpValue;
-	
+
 	SHKFormController *form;
 }
 

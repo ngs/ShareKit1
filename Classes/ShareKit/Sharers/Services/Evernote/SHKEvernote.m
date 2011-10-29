@@ -16,7 +16,7 @@
 
 - (void)dealloc {
 	[note release];
-	[super dealloc];	
+	[super dealloc];
 }
 
 
@@ -56,7 +56,7 @@
 + (NSArray *)authorizationFormFields {
 	return [NSArray arrayWithObjects:
 			[SHKFormFieldSettings label:@"Username" key:@"username" type:SHKFormFieldTypeText start:nil],
-			[SHKFormFieldSettings label:@"Password" key:@"password" type:SHKFormFieldTypePassword start:nil],			
+			[SHKFormFieldSettings label:@"Password" key:@"password" type:SHKFormFieldTypePassword start:nil],
 			nil];
 }
 
@@ -97,7 +97,7 @@
   }
   @catch (NSException * e) {
 		NSLog(@"Caught %@: %@ %@", [e name], [e reason],e);
-	}	
+	}
 	[self performSelectorOnMainThread:@selector(_authFinished:) withObject:[NSDictionary dictionaryWithObjectsAndKeys:success?@"1":@"0",@"success",nil] waitUntilDone:YES];
     [pool release];
 }
@@ -128,7 +128,7 @@
 
 // + (BOOL)canAutoShare { return NO; }
 
-- (void)shareFormValidate:(SHKCustomFormController *)form {	
+- (void)shareFormValidate:(SHKCustomFormController *)form {
 	[form saveForm];
 }
 
@@ -192,7 +192,7 @@
 		if(!note)
     	note = [[[EDAMNote alloc] init] autorelease];
 
-		
+
 		EDAMNoteAttributes *atr = [note attributesIsSet] ? [note.attributes retain] : [[EDAMNoteAttributes alloc] init];
 
 		if(![atr sourceURLIsSet]&&enItem.URL)
@@ -236,7 +236,7 @@
 			}
 
 			if(item.data) {
-				EDAMResource *file = [[[EDAMResource alloc] init] autorelease];	
+				EDAMResource *file = [[[EDAMResource alloc] init] autorelease];
 				EDAMData *filed = [[[EDAMData alloc] initWithBodyHash:item.data size:[item.data length] body:item.data] autorelease];
 				[file setData:filed];
 				[file setRecognition:filed];
@@ -248,8 +248,8 @@
 			[note setContent:contentStr];
 			[contentStr release];
 		}
-    
-    
+
+
   	////////////////////////////////////////////////
     // Replace <img> HTML elements with en-media elements
   	////////////////////////////////////////////////
@@ -301,7 +301,7 @@
 }
 
 
-- (void)sendFinished:(BOOL)success {	
+- (void)sendFinished:(BOOL)success {
 	if (success) {
 		[self sendDidFinish];
 	} else {

@@ -28,7 +28,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface ExampleShareText : UIViewController 
+@interface ExampleShareText : UIViewController
 {
 	UITextView *textView;
 }

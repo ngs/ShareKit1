@@ -33,7 +33,7 @@
 - (void)SHKviewDidDisappear:(BOOL)animated
 {
 	[super viewDidDisappear:animated];
-	
+
 	// Remove the SHK view wrapper from the window
 	[[SHK currentHelper] viewWasDismissed];
 }
@@ -92,33 +92,33 @@
 #pragma mark Share API Methods
 
 - (BOOL)send
-{	
+{
 	if (![self validateItem])
 		return NO;
-	
+
 	return [self sendSMS]; // Put the actual sending action in another method to make subclassing SHKSMS easier
 }
 
 - (BOOL)sendSMS
-{	
+{
 	MFMessageComposeViewController *messageController = [[[MFMessageComposeViewController alloc] init] autorelease];
 	messageController.messageComposeDelegate = self;
-	
+
 	NSString *body = [item customValueForKey:@"body"];
-	
+
 	if (body == nil)
 	{
 		if (item.text != nil)
 			body = item.text;
-		
-		
+
+
 		if (item.URL != nil)
-		{	
+		{
 			NSString *urlStr = [item.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-			
+
 			if (body != nil)
 				body = [body stringByAppendingFormat:@" - %@", urlStr];
-			
+
 			else
 				body = urlStr;
 		}
@@ -126,18 +126,18 @@
 		// fallback
 		if (body == nil)
 			body = @"";
-		
+
 		// sig
 		body = [body stringByAppendingFormat:@" [Sent from %@]", SHKMyAppName];
-		
+
 		// save changes to body
 		[item setCustomValue:body forKey:@"body"];
 	}
-	
+
 	[messageController setBody:body];
-	
+
 	[[SHK currentHelper] showViewController:messageController];
-	
+
 	return YES;
 }
 
@@ -162,7 +162,7 @@
 		default:
 			break;
 	}
-	
+
 	[[SHK currentHelper] hideCurrentViewControllerAnimated:YES];
 }
 

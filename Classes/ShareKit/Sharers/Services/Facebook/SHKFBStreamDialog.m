@@ -16,13 +16,13 @@
 - (void)dealloc
 {
 	[defaultStatus release];
-	[super dealloc];	
+	[super dealloc];
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView 
+- (void)webViewDidFinishLoad:(UIWebView *)webView
 {
 	[super webViewDidFinishLoad:webView];
-	
+
 	if (defaultStatus)
 	{
 		// Set the pre-filled status message
@@ -31,7 +31,7 @@
 		  [SHKEncode(defaultStatus) stringByReplacingOccurrencesOfString:@"'" withString:@"\\'"]
 		 ]
 		];
-		
+
 		// Make the text field bigger
 		[_webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByName('feedform_user_message')[0].style.height='100px'"];
 	}

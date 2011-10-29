@@ -50,17 +50,17 @@ BOOL SHKinit;
 {
 	if (currentHelper == nil)
 		currentHelper = [[SHK alloc] init];
-	
+
 	return currentHelper;
 }
 
 + (void)initialize
 {
 	[super initialize];
-	
+
 	if (!SHKinit)
 	{
-		SHKSwizzle([MFMailComposeViewController class], @selector(viewDidDisappear:), @selector(SHKviewDidDisappear:));	
+		SHKSwizzle([MFMailComposeViewController class], @selector(viewDidDisappear:), @selector(SHKviewDidDisappear:));
 		SHKinit = YES;
 	}
 }
@@ -79,17 +79,17 @@ BOOL SHKinit;
 #pragma mark View Management
 
 + (void)setRootViewController:(UIViewController *)vc
-{	
+{
 	SHK *helper = [self currentHelper];
-	[helper setRootViewController:vc];	
+	[helper setRootViewController:vc];
 }
 
 - (void)showViewController:(UIViewController *)vc
-{	
+{
 	if (rootViewController == nil)
 	{
 		// Try to find the root view controller programmically
-		
+
 		// Find the top window (that is not an alert view or other window)
 		UIWindow *topWindow = [[UIApplication sharedApplication] keyWindow];
 		if (topWindow.windowLevel != UIWindowLevelNormal)
@@ -101,23 +101,23 @@ BOOL SHKinit;
 					break;
 			}
 		}
-		
-		UIView *rootView = [[topWindow subviews] objectAtIndex:0];	
+
+		UIView *rootView = [[topWindow subviews] objectAtIndex:0];
 		id nextResponder = [rootView nextResponder];
-		
+
 		if ([nextResponder isKindOfClass:[UIViewController class]])
 			self.rootViewController = nextResponder;
-		
+
 		else
 			NSAssert(NO, @"ShareKit: Could not find a root view controller.  You can assign one manually by calling [[SHK currentHelper] setRootViewController:YOURROOTVIEWCONTROLLER].");
 	}
-	
+
 	// Find the top most view controller being displayed (so we can add the modal view to it and not one that is hidden)
-	UIViewController *topViewController = [self getTopViewController];	
+	UIViewController *topViewController = [self getTopViewController];
 	if (topViewController == nil)
 		NSAssert(NO, @"ShareKit: There is no view controller to display from");
-	
-		
+
+
 	// If a view is already being shown, hide it, and then try again
 	if (currentView != nil)
 	{
@@ -125,40 +125,40 @@ BOOL SHKinit;
 		[[currentView parentViewController] dismissModalViewControllerAnimated:YES];
 		return;
 	}
-		
+
 	// Wrap the view in a nav controller if not already
 	if (![vc respondsToSelector:@selector(pushViewController:animated:)])
 	{
 		UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:vc] autorelease];
-		
+
 		if ([nav respondsToSelector:@selector(modalPresentationStyle)])
 			[nav setModalTransitionStyle:[SHK modalPresentationStyle]];
-		
+
 		if ([nav respondsToSelector:@selector(modalTransitionStyle)])
 			nav.modalTransitionStyle = [SHK modalTransitionStyle];
-		
+
 		nav.navigationBar.barStyle = nav.toolbar.barStyle = [SHK barStyle];
-		
-		[topViewController presentModalViewController:nav animated:YES];			
+
+		[topViewController presentModalViewController:nav animated:YES];
 		self.currentView = nav;
 	}
-	
+
 	// Show the nav controller
 	else
-	{		
+	{
 		if ([vc respondsToSelector:@selector(modalPresentationStyle)])
 			[vc setModalTransitionStyle:[SHK modalPresentationStyle]];
-		
+
 		if ([vc respondsToSelector:@selector(modalTransitionStyle)])
 			vc.modalTransitionStyle = [SHK modalTransitionStyle];
-		
+
 		[topViewController presentModalViewController:vc animated:YES];
-		[(UINavigationController *)vc navigationBar].barStyle = 
+		[(UINavigationController *)vc navigationBar].barStyle =
 		[(UINavigationController *)vc toolbar].barStyle = [SHK barStyle];
 		self.currentView = vc;
 	}
-		
-	self.pendingView = nil;		
+
+	self.pendingView = nil;
 }
 
 - (void)hideCurrentViewController
@@ -170,7 +170,7 @@ BOOL SHKinit;
 {
 	if (isDismissingView)
 		return;
-	
+
 	if (currentView != nil)
 	{
 		// Dismiss the modal view
@@ -179,7 +179,7 @@ BOOL SHKinit;
 			self.isDismissingView = YES;
 			[[currentView parentViewController] dismissModalViewControllerAnimated:animated];
 		}
-		
+
 		else
 			self.currentView = nil;
 	}
@@ -195,10 +195,10 @@ BOOL SHKinit;
 - (void)viewWasDismissed
 {
 	self.isDismissingView = NO;
-	
+
 	if (currentView != nil)
 		self.currentView = nil;
-	
+
 	if (pendingView)
 	{
 		// This is an ugly way to do it, but it works.
@@ -208,7 +208,7 @@ BOOL SHKinit;
 		return;
 	}
 }
-										   
+
 - (UIViewController *)getTopViewController
 {
 	UIViewController *topViewController = rootViewController;
@@ -216,18 +216,18 @@ BOOL SHKinit;
 		topViewController = topViewController.modalViewController;
 	return topViewController;
 }
-			
+
 + (UIBarStyle)barStyle
 {
-	if ([SHKBarStyle isEqualToString:@"UIBarStyleBlack"])		
+	if ([SHKBarStyle isEqualToString:@"UIBarStyleBlack"])
 		return UIBarStyleBlack;
-	
-	else if ([SHKBarStyle isEqualToString:@"UIBarStyleBlackOpaque"])		
+
+	else if ([SHKBarStyle isEqualToString:@"UIBarStyleBlackOpaque"])
 		return UIBarStyleBlackOpaque;
-	
-	else if ([SHKBarStyle isEqualToString:@"UIBarStyleBlackTranslucent"])		
+
+	else if ([SHKBarStyle isEqualToString:@"UIBarStyleBlackTranslucent"])
 		return UIBarStyleBlackTranslucent;
-	
+
 	return UIBarStyleDefault;
 }
 
@@ -235,29 +235,29 @@ BOOL SHKinit;
 
 + (UIModalPresentationStyle)modalPresentationStyle
 {
-	if ([SHKModalPresentationStyle isEqualToString:@"UIModalPresentationFullScreen"])		
+	if ([SHKModalPresentationStyle isEqualToString:@"UIModalPresentationFullScreen"])
 		return UIModalPresentationFullScreen;
-	
-	else if ([SHKModalPresentationStyle isEqualToString:@"UIModalPresentationPageSheet"])		
+
+	else if ([SHKModalPresentationStyle isEqualToString:@"UIModalPresentationPageSheet"])
 		return UIModalPresentationPageSheet;
-	
-	else if ([SHKModalPresentationStyle isEqualToString:@"UIModalPresentationFormSheet"])		
+
+	else if ([SHKModalPresentationStyle isEqualToString:@"UIModalPresentationFormSheet"])
 		return UIModalPresentationFormSheet;
-	
+
 	return UIModalPresentationCurrentContext;
 }
 
 + (UIModalTransitionStyle)modalTransitionStyle
 {
-	if ([SHKModalTransitionStyle isEqualToString:@"UIModalTransitionStyleFlipHorizontal"])		
+	if ([SHKModalTransitionStyle isEqualToString:@"UIModalTransitionStyleFlipHorizontal"])
 		return UIModalTransitionStyleFlipHorizontal;
-	
-	else if ([SHKModalTransitionStyle isEqualToString:@"UIModalTransitionStyleCrossDissolve"])		
+
+	else if ([SHKModalTransitionStyle isEqualToString:@"UIModalTransitionStyleCrossDissolve"])
 		return UIModalTransitionStyleCrossDissolve;
-	
-	else if ([SHKModalTransitionStyle isEqualToString:@"UIModalTransitionStylePartialCurl"])		
+
+	else if ([SHKModalTransitionStyle isEqualToString:@"UIModalTransitionStylePartialCurl"])
 		return UIModalTransitionStylePartialCurl;
-	
+
 	return UIModalTransitionStyleCoverVertical;
 }
 
@@ -274,26 +274,26 @@ BOOL SHKinit;
 
 
 + (NSArray *)favoriteSharersForType:(SHKShareType)type
-{	
+{
 	NSArray *favoriteSharers = [[NSUserDefaults standardUserDefaults] objectForKey:[NSString stringWithFormat:@"%@%i", SHK_FAVS_PREFIX_KEY, type]];
-		
+
 	// set defaults
 	if (favoriteSharers == nil)
 	{
-		switch (type) 
+		switch (type)
 		{
 			case SHKShareTypeURL:
 				favoriteSharers = [NSArray arrayWithObjects:@"SHKTwitter",@"SHKFacebook",@"SHKReadItLater",nil];
 				break;
-				
+
 			case SHKShareTypeImage:
 				favoriteSharers = [NSArray arrayWithObjects:@"SHKMail",@"SHKFacebook",@"SHKCopy",nil];
 				break;
-				
+
 			case SHKShareTypeText:
 				favoriteSharers = [NSArray arrayWithObjects:@"SHKMail",@"SHKTwitter",@"SHKFacebook", nil];
 				break;
-				
+
 			case SHKShareTypeFile:
 				favoriteSharers = [NSArray arrayWithObjects:@"SHKMail", nil];
 				break;
@@ -302,11 +302,11 @@ BOOL SHKinit;
         SHKLog(@"Received call to favoriteSharersForType for type SHKShareTypeUndefined!");
         break;
     }
-		
+
 		// Save defaults to prefs
 		[self setFavorites:favoriteSharers forType:type];
 	}
-	
+
 	// Make sure the favorites are not using any exclusions, remove them if they are.
 	NSArray *exclusions = [[NSUserDefaults standardUserDefaults] objectForKey:@"SHKExcluded"];
 	if (exclusions != nil)
@@ -316,29 +316,29 @@ BOOL SHKinit;
 		{
 			[newFavs removeObject:sharerId];
 		}
-		
+
 		// Update
 		favoriteSharers = [NSArray arrayWithArray:newFavs];
 		[self setFavorites:favoriteSharers forType:type];
-		
+
 		[newFavs release];
 	}
-	
+
 	return favoriteSharers;
 }
 
 + (void)pushOnFavorites:(NSString *)className forType:(SHKShareType)type
 {
 	NSMutableArray *favs = [[self favoriteSharersForType:type] mutableCopy];
-	
+
 	[favs removeObject:className];
 	[favs insertObject:className atIndex:0];
-	
+
 	while (favs.count > SHK_MAX_FAV_COUNT)
 		[favs removeLastObject];
-	
+
 	[self setFavorites:favs forType:type];
-	
+
 	[favs release];
 }
 
@@ -356,7 +356,7 @@ BOOL SHKinit;
 
 + (void)setUserExclusions:(NSDictionary *)exclusions
 {
-	return [[NSUserDefaults standardUserDefaults] setObject:exclusions forKey:[NSString stringWithFormat:@"%@Exclusions", SHK_FAVS_PREFIX_KEY]];	
+	return [[NSUserDefaults standardUserDefaults] setObject:exclusions forKey:[NSString stringWithFormat:@"%@Exclusions", SHK_FAVS_PREFIX_KEY]];
 }
 
 
@@ -410,8 +410,8 @@ BOOL SHKinit;
 }
 
 + (void)logoutOfService:(NSString *)sharerId
-{	
-	[NSClassFromString(sharerId) logout];	
+{
+	[NSClassFromString(sharerId) logout];
 }
 
 
@@ -423,7 +423,7 @@ static NSDictionary *sharersDictionary = nil;
 {
 	if (sharersDictionary == nil)
 		sharersDictionary = [[NSDictionary dictionaryWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"SHKSharers.plist"]] retain];
-	
+
 	return sharersDictionary;
 }
 
@@ -437,11 +437,11 @@ static NSDictionary *sharersDictionary = nil;
 	NSArray *paths = NSSearchPathForDirectoriesInDomains( NSCachesDirectory, NSUserDomainMask, YES);
 	NSString *cache = [paths objectAtIndex:0];
 	NSString *SHKPath = [cache stringByAppendingPathComponent:@"SHK"];
-	
+
 	// Check if the path exists, otherwise create it
-	if (![fileManager fileExistsAtPath:SHKPath]) 
+	if (![fileManager fileExistsAtPath:SHKPath])
 		[fileManager createDirectoryAtPath:SHKPath withIntermediateDirectories:YES attributes:nil error:nil];
-	
+
 	return SHKPath;
 }
 
@@ -457,74 +457,74 @@ static NSDictionary *sharersDictionary = nil;
 
 + (void)saveOfflineQueueList:(NSMutableArray *)queueList
 {
-	[queueList writeToFile:[self offlineQueueListPath] atomically:YES]; // TODO - should do this off of the main thread	
+	[queueList writeToFile:[self offlineQueueListPath] atomically:YES]; // TODO - should do this off of the main thread
 }
 
 + (BOOL)addToOfflineQueue:(SHKItem *)item forSharer:(NSString *)sharerId
 {
 	// Generate a unique id for the share to use when saving associated files
 	NSString *uid = [NSString stringWithFormat:@"%@-%i-%i-%i", sharerId, item.shareType, [[NSDate date] timeIntervalSince1970], arc4random()];
-	
-	
+
+
 	// store image in cache
 	if (item.shareType == SHKShareTypeImage && item.image)
 		[UIImageJPEGRepresentation(item.image, 1) writeToFile:[[self offlineQueuePath] stringByAppendingPathComponent:uid] atomically:YES];
-	
+
 	// store file in cache
 	else if (item.shareType == SHKShareTypeFile)
 		[item.data writeToFile:[[self offlineQueuePath] stringByAppendingPathComponent:uid] atomically:YES];
-	
+
 	// Open queue list
 	NSMutableArray *queueList = [self getOfflineQueueList];
 	if (queueList == nil)
 		queueList = [NSMutableArray arrayWithCapacity:0];
-	
+
 	// Add to queue list
 	[queueList addObject:[NSDictionary dictionaryWithObjectsAndKeys:
 						  [item dictionaryRepresentation],@"item",
 						  sharerId,@"sharer",
 						  uid,@"uid",
 						  nil]];
-	
+
 	[self saveOfflineQueueList:queueList];
-	
+
 	return YES;
 }
 
 + (void)flushOfflineQueue
 {
 	// TODO - if an item fails, after all items are shared, it should present a summary view and allow them to see which items failed/succeeded
-	
+
 	// Check for a connection
 	if (![self connected])
 		return;
-	
+
 	// Open list
 	NSMutableArray *queueList = [self getOfflineQueueList];
-	
+
 	// Run through each item in the quietly in the background
 	// TODO - Is this the best behavior?  Instead, should the user confirm sending these again?  Maybe only if it has been X days since they were saved?
 	//		- want to avoid a user being suprised by a post to Twitter if that happens long after they forgot they even shared it.
 	if (queueList != nil)
 	{
 		SHK *helper = [self currentHelper];
-		
+
 		if (helper.offlineQueue == nil)
-			helper.offlineQueue = [[NSOperationQueue alloc] init];		
-	
+			helper.offlineQueue = [[NSOperationQueue alloc] init];
+
 		SHKItem *item;
 		NSString *sharerId, *uid;
-		
+
 		for (NSDictionary *entry in queueList)
 		{
 			item = [SHKItem itemFromDictionary:[entry objectForKey:@"item"]];
 			sharerId = [entry objectForKey:@"sharer"];
 			uid = [entry objectForKey:@"uid"];
-			
+
 			if (item != nil && sharerId != nil)
 				[helper.offlineQueue addOperation:[[[SHKOfflineSharer alloc] initWithItem:item forSharer:sharerId uid:uid] autorelease]];
 		}
-		
+
 		// Remove offline queue - TODO: only do this if everything was successful?
 		[[NSFileManager defaultManager] removeItemAtPath:[self offlineQueueListPath] error:nil];
 
@@ -539,18 +539,18 @@ static NSDictionary *sharersDictionary = nil;
     va_start(args, description);
     NSString *string = [[[NSString alloc] initWithFormat:description arguments:args] autorelease];
     va_end(args);
-	
+
 	return [NSError errorWithDomain:@"sharekit" code:1 userInfo:[NSDictionary dictionaryWithObject:string forKey:NSLocalizedDescriptionKey]];
 }
 
 #pragma mark -
 #pragma mark Network
 
-+ (BOOL)connected 
++ (BOOL)connected
 {
 	//return NO; // force for offline testing
-	Reachability *hostReach = [Reachability reachabilityForInternetConnection];	
-	NetworkStatus netStatus = [hostReach currentReachabilityStatus];	
+	Reachability *hostReach = [Reachability reachabilityForInternetConnection];
+	NetworkStatus netStatus = [hostReach currentReachabilityStatus];
 	return !(netStatus == NotReachable);
 }
 
@@ -566,21 +566,21 @@ NSString * SHKEncode(NSString * value)
 {
 	if (value == nil)
 		return @"";
-	
+
 	NSString *string = value;
-	
+
 	string = [string stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
 	string = [string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 	string = [string stringByReplacingOccurrencesOfString:@"&" withString:@"%26"];
-	
-	return string;	
+
+	return string;
 }
 
 NSString * SHKEncodeURL(NSURL * value)
 {
 	if (value == nil)
 		return @"";
-	
+
 	NSString *result = (NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
                                                                            (CFStringRef)value.absoluteString,
                                                                            NULL,
@@ -600,15 +600,15 @@ void SHKSwizzle(Class c, SEL orig, SEL newClassName)
 		method_exchangeImplementations(origMethod, newMethod);
 }
 
-NSString* SHKLocalizedString(NSString* key, ...) 
+NSString* SHKLocalizedString(NSString* key, ...)
 {
 	// Localize the format
 	NSString *localizedStringFormat = NSLocalizedString(key, key);
-	
+
 	va_list args;
     va_start(args, key);
     NSString *string = [[[NSString alloc] initWithFormat:localizedStringFormat arguments:args] autorelease];
     va_end(args);
-	
+
 	return string;
 }

@@ -35,17 +35,17 @@
 	NSString *consumerKey;
 	NSString *secretKey;
 	NSURL *authorizeCallbackURL;
-	
+
 	NSURL *authorizeURL;
 	NSURL *accessURL;
 	NSURL *requestURL;
-	
+
 	OAConsumer *consumer;
 	OAToken *requestToken;
 	OAToken *accessToken;
-	
+
 	id<OASignatureProviding> signatureProvider;
-	
+
 	NSDictionary *authorizeResponseQueryVars;
 }
 

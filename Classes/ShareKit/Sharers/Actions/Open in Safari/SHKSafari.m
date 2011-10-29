@@ -70,13 +70,13 @@
 #pragma mark Share API Methods
 
 - (BOOL)send
-{	
+{
 	self.quiet = YES;
-	
+
 	[[UIApplication sharedApplication] openURL:item.URL];
-	
+
 	[self sendDidFinish];
-	
+
 	return YES;
 }
 
