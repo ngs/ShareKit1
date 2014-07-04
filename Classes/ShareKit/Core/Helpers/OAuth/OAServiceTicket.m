@@ -30,7 +30,7 @@
 @implementation OAServiceTicket
 @synthesize request, response, data, didSucceed;
 
-- (id)initWithRequest:(OAMutableURLRequest *)aRequest response:(NSHTTPURLResponse *)aResponse didSucceed:(BOOL)success 
+- (id)initWithRequest:(OAMutableURLRequest *)aRequest response:(NSHTTPURLResponse *)aResponse didSucceed:(BOOL)success
 {
 	return [self initWithRequest:aRequest response:aResponse data:nil didSucceed:success];
 }
@@ -49,7 +49,7 @@
 	if (!data) {
 		return nil;
 	}
-	
+
 	return [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
 }
 

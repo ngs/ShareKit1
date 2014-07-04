@@ -57,14 +57,14 @@
 		self.url = u;
 		self.params = p;
 		self.method = m;
-		
+
 		self.delegate = d;
 		self.isFinishedSelector = s;
-		
+
 		if (autostart)
 			[self start];
 	}
-	
+
 	return self;
 }
 
@@ -75,25 +75,25 @@
 {
 	self.data = [[NSMutableData alloc] initWithLength:0];
 	[data release];
-	
+
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url
 																  cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
 															  timeoutInterval:SHK_TIMEOUT];
-	
+
 	// overwrite header fields (generally for cookies)
 	if (headerFields != nil)
-		[request setAllHTTPHeaderFields:headerFields];	
-	
+		[request setAllHTTPHeaderFields:headerFields];
+
 	// Setup Request Data/Params
 	if (params != nil)
 	{
 		NSData *paramsData = [ NSData dataWithBytes:[params UTF8String] length:[params length] ];
-		
+
 		// Fill Request
 		[request setHTTPMethod:method];
 		[request setHTTPBody:paramsData];
 	}
-	
+
 	// Start Connection
 	SHKLog(@"Start SHKRequest:\nURL: %@\nparams: %@", url, params);
 	self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
@@ -104,26 +104,26 @@
 
 #pragma mark -
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)theResponse 
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)theResponse
 {
 	self.response = theResponse;
 	self.headers = [[response allHeaderFields] mutableCopy];
 	[headers release];
-	
+
 	[data setLength:0];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)d 
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)d
 {
 	[data appendData:d];
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection 
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
 	[self finish];
 }
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error 
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
 	[self finish];
 }
@@ -133,7 +133,7 @@
 - (void)finish
 {
 	self.success = (response.statusCode == 200 || response.statusCode == 201);
-	
+
 	if ([delegate respondsToSelector:isFinishedSelector])
 		[delegate performSelector:isFinishedSelector withObject:self];
 }

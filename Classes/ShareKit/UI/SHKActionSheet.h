@@ -29,9 +29,9 @@
 #import "SHK.h"
 
 @interface SHKActionSheet : UIActionSheet <UIActionSheetDelegate>
-{		
+{
 	NSMutableArray *sharers;
-	
+
 	SHKItem *item;
 }
 

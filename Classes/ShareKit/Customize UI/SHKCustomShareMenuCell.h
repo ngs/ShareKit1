@@ -30,15 +30,15 @@
 
 /*
  Two ways to customize:
- 
+
  1. If you already have a custom UITableViewCell subclass you are using in your app,
 	simply replace UITableViewCell with your own class.
- 
- 2. Add any customizations by subclassing this (SHKTableViewCell) 
+
+ 2. Add any customizations by subclassing this (SHKTableViewCell)
 */
 
-@interface SHKCustomShareMenuCell : UITableViewCell 
-{	
+@interface SHKCustomShareMenuCell : UITableViewCell
+{
 	// See http://getsharekit.com/customize/ for additional information on customizing
 }
 

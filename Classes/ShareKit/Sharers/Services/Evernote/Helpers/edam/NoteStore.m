@@ -176,7 +176,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -185,7 +185,7 @@
         if (fieldType == TType_I64) {
           int64_t fieldValue = [inProtocol readI64];
           [self setCurrentTime: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -193,7 +193,7 @@
         if (fieldType == TType_I64) {
           int64_t fieldValue = [inProtocol readI64];
           [self setFullSyncBefore: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -201,7 +201,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setUpdateCount: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -209,7 +209,7 @@
         if (fieldType == TType_I64) {
           int64_t fieldValue = [inProtocol readI64];
           [self setUploaded: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -693,7 +693,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -702,7 +702,7 @@
         if (fieldType == TType_I64) {
           int64_t fieldValue = [inProtocol readI64];
           [self setCurrentTime: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -710,7 +710,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setChunkHighUSN: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -718,7 +718,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setUpdateCount: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -738,7 +738,7 @@
           [inProtocol readListEnd];
           [self setNotes: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -758,7 +758,7 @@
           [inProtocol readListEnd];
           [self setNotebooks: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -778,7 +778,7 @@
           [inProtocol readListEnd];
           [self setTags: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -798,7 +798,7 @@
           [inProtocol readListEnd];
           [self setSearches: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -818,7 +818,7 @@
           [inProtocol readListEnd];
           [self setResources: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -836,7 +836,7 @@
           [inProtocol readListEnd];
           [self setExpungedNotes: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -854,7 +854,7 @@
           [inProtocol readListEnd];
           [self setExpungedNotebooks: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -872,7 +872,7 @@
           [inProtocol readListEnd];
           [self setExpungedTags: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -890,7 +890,7 @@
           [inProtocol readListEnd];
           [self setExpungedSearches: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -1350,7 +1350,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -1359,7 +1359,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setOrder: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -1367,7 +1367,7 @@
         if (fieldType == TType_BOOL) {
           BOOL fieldValue = [inProtocol readBool];
           [self setAscending: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -1375,7 +1375,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setWords: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -1383,7 +1383,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setNotebookGuid: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -1401,7 +1401,7 @@
           [inProtocol readListEnd];
           [self setTagGuids: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -1409,7 +1409,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setTimeZone: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -1417,7 +1417,7 @@
         if (fieldType == TType_BOOL) {
           BOOL fieldValue = [inProtocol readBool];
           [self setInactive: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -1705,7 +1705,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -1714,7 +1714,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setStartIndex: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -1722,7 +1722,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setTotalNotes: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -1742,7 +1742,7 @@
           [inProtocol readListEnd];
           [self setNotes: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -1760,7 +1760,7 @@
           [inProtocol readListEnd];
           [self setStoppedWords: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -1778,7 +1778,7 @@
           [inProtocol readListEnd];
           [self setSearchedWords: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -2003,7 +2003,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -2023,7 +2023,7 @@
           [inProtocol readMapEnd];
           [self setNotebookCounts: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -2042,7 +2042,7 @@
           [inProtocol readMapEnd];
           [self setTagCounts: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -2050,7 +2050,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setTrashCount: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -2245,7 +2245,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -2254,7 +2254,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setAdId: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -2262,7 +2262,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setImpressionCount: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -2270,7 +2270,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setImpressionTime: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -2485,7 +2485,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -2494,7 +2494,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setClientLanguage: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -2514,7 +2514,7 @@
           [inProtocol readListEnd];
           [self setImpressions: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -2522,7 +2522,7 @@
         if (fieldType == TType_BOOL) {
           BOOL fieldValue = [inProtocol readBool];
           [self setSupportHtml: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -2541,7 +2541,7 @@
           [inProtocol readMapEnd];
           [self setClientProperties: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -2860,7 +2860,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -2869,7 +2869,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setGuid: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -2879,7 +2879,7 @@
           [fieldValue read: inProtocol];
           [self setNote: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -2897,7 +2897,7 @@
           [inProtocol readListEnd];
           [self setToAddresses: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -2915,7 +2915,7 @@
           [inProtocol readListEnd];
           [self setCcAddresses: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -2923,7 +2923,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setSubject: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -2931,7 +2931,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setMessage: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -3185,7 +3185,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -3194,7 +3194,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setUpdateSequenceNum: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -3202,7 +3202,7 @@
         if (fieldType == TType_I64) {
           int64_t fieldValue = [inProtocol readI64];
           [self setUpdated: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -3210,7 +3210,7 @@
         if (fieldType == TType_I64) {
           int64_t fieldValue = [inProtocol readI64];
           [self setSaved: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -3218,7 +3218,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setTitle: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -3366,7 +3366,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -3375,7 +3375,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -3584,7 +3584,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -3595,7 +3595,7 @@
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -3605,7 +3605,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -3615,7 +3615,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -3867,7 +3867,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -3876,7 +3876,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -3884,7 +3884,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setAfterUSN: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -3892,7 +3892,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setMaxEntries: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -3900,7 +3900,7 @@
         if (fieldType == TType_BOOL) {
           BOOL fieldValue = [inProtocol readBool];
           [self setFullSyncOnly: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -4130,7 +4130,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -4141,7 +4141,7 @@
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -4151,7 +4151,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -4161,7 +4161,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -4305,7 +4305,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -4314,7 +4314,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -4523,7 +4523,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -4544,7 +4544,7 @@
           [inProtocol readListEnd];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -4554,7 +4554,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -4564,7 +4564,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -4757,7 +4757,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -4766,7 +4766,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -4774,7 +4774,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setGuid: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -5033,7 +5033,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -5044,7 +5044,7 @@
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -5054,7 +5054,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -5064,7 +5064,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -5074,7 +5074,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -5226,7 +5226,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -5235,7 +5235,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -5444,7 +5444,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -5455,7 +5455,7 @@
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -5465,7 +5465,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -5475,7 +5475,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -5660,7 +5660,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -5669,7 +5669,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -5679,7 +5679,7 @@
           [fieldValue read: inProtocol];
           [self setNotebook: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -5897,7 +5897,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -5908,7 +5908,7 @@
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -5918,7 +5918,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -5928,7 +5928,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -6113,7 +6113,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -6122,7 +6122,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -6132,7 +6132,7 @@
           [fieldValue read: inProtocol];
           [self setNotebook: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -6386,7 +6386,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -6395,7 +6395,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setSuccess: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -6405,7 +6405,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -6415,7 +6415,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -6425,7 +6425,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -6616,7 +6616,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -6625,7 +6625,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -6633,7 +6633,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setGuid: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -6887,7 +6887,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -6896,7 +6896,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setSuccess: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -6906,7 +6906,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -6916,7 +6916,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -6926,7 +6926,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -7076,7 +7076,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -7085,7 +7085,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -7294,7 +7294,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -7315,7 +7315,7 @@
           [inProtocol readListEnd];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -7325,7 +7325,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -7335,7 +7335,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -7528,7 +7528,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -7537,7 +7537,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -7545,7 +7545,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setNotebookGuid: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -7804,7 +7804,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -7825,7 +7825,7 @@
           [inProtocol readListEnd];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -7835,7 +7835,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -7845,7 +7845,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -7855,7 +7855,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -8056,7 +8056,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -8065,7 +8065,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -8073,7 +8073,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setGuid: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -8332,7 +8332,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -8343,7 +8343,7 @@
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -8353,7 +8353,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -8363,7 +8363,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -8373,7 +8373,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -8566,7 +8566,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -8575,7 +8575,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -8585,7 +8585,7 @@
           [fieldValue read: inProtocol];
           [self setTag: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -8844,7 +8844,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -8855,7 +8855,7 @@
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -8865,7 +8865,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -8875,7 +8875,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -8885,7 +8885,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -9078,7 +9078,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -9087,7 +9087,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -9097,7 +9097,7 @@
           [fieldValue read: inProtocol];
           [self setTag: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -9351,7 +9351,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -9360,7 +9360,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setSuccess: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -9370,7 +9370,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -9380,7 +9380,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -9390,7 +9390,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -9581,7 +9581,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -9590,7 +9590,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -9598,7 +9598,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setGuid: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -9816,7 +9816,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -9827,7 +9827,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -9837,7 +9837,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -9847,7 +9847,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -10032,7 +10032,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -10041,7 +10041,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -10049,7 +10049,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setGuid: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -10303,7 +10303,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -10312,7 +10312,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setSuccess: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -10322,7 +10322,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -10332,7 +10332,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -10342,7 +10342,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -10492,7 +10492,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -10501,7 +10501,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -10710,7 +10710,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -10731,7 +10731,7 @@
           [inProtocol readListEnd];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -10741,7 +10741,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -10751,7 +10751,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -10944,7 +10944,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -10953,7 +10953,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -10961,7 +10961,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setGuid: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -11220,7 +11220,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -11231,7 +11231,7 @@
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -11241,7 +11241,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -11251,7 +11251,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -11261,7 +11261,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -11454,7 +11454,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -11463,7 +11463,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -11473,7 +11473,7 @@
           [fieldValue read: inProtocol];
           [self setSearch: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -11691,7 +11691,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -11702,7 +11702,7 @@
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -11712,7 +11712,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -11722,7 +11722,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -11907,7 +11907,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -11916,7 +11916,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -11926,7 +11926,7 @@
           [fieldValue read: inProtocol];
           [self setSearch: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -12180,7 +12180,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -12189,7 +12189,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setSuccess: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -12199,7 +12199,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -12209,7 +12209,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -12219,7 +12219,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -12410,7 +12410,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -12419,7 +12419,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -12427,7 +12427,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setGuid: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -12681,7 +12681,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -12690,7 +12690,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setSuccess: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -12700,7 +12700,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -12710,7 +12710,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -12720,7 +12720,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -12983,7 +12983,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -12992,7 +12992,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -13002,7 +13002,7 @@
           [fieldValue read: inProtocol];
           [self setFilter: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -13010,7 +13010,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setOffset: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -13018,7 +13018,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setMaxNotes: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -13291,7 +13291,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -13302,7 +13302,7 @@
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -13312,7 +13312,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -13322,7 +13322,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -13332,7 +13332,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -13561,7 +13561,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -13570,7 +13570,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -13580,7 +13580,7 @@
           [fieldValue read: inProtocol];
           [self setFilter: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -13588,7 +13588,7 @@
         if (fieldType == TType_BOOL) {
           BOOL fieldValue = [inProtocol readBool];
           [self setWithTrash: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -13854,7 +13854,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -13865,7 +13865,7 @@
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -13875,7 +13875,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -13885,7 +13885,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -13895,7 +13895,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -14232,7 +14232,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -14241,7 +14241,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -14249,7 +14249,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setGuid: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -14257,7 +14257,7 @@
         if (fieldType == TType_BOOL) {
           BOOL fieldValue = [inProtocol readBool];
           [self setWithContent: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -14265,7 +14265,7 @@
         if (fieldType == TType_BOOL) {
           BOOL fieldValue = [inProtocol readBool];
           [self setWithResourcesData: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -14273,7 +14273,7 @@
         if (fieldType == TType_BOOL) {
           BOOL fieldValue = [inProtocol readBool];
           [self setWithResourcesRecognition: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -14281,7 +14281,7 @@
         if (fieldType == TType_BOOL) {
           BOOL fieldValue = [inProtocol readBool];
           [self setWithResourcesAlternateData: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -14568,7 +14568,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -14579,7 +14579,7 @@
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -14589,7 +14589,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -14599,7 +14599,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -14609,7 +14609,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -14802,7 +14802,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -14811,7 +14811,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -14819,7 +14819,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setGuid: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -15078,7 +15078,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -15087,7 +15087,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setSuccess: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -15097,7 +15097,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -15107,7 +15107,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -15117,7 +15117,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -15310,7 +15310,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -15319,7 +15319,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -15327,7 +15327,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setGuid: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -15586,7 +15586,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -15595,7 +15595,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setSuccess: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -15605,7 +15605,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -15615,7 +15615,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -15625,7 +15625,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -15818,7 +15818,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -15827,7 +15827,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -15835,7 +15835,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setGuid: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -16094,7 +16094,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -16113,7 +16113,7 @@
           [inProtocol readListEnd];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -16123,7 +16123,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -16133,7 +16133,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -16143,7 +16143,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -16344,7 +16344,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -16353,7 +16353,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -16363,7 +16363,7 @@
           [fieldValue read: inProtocol];
           [self setNote: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -16622,7 +16622,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -16633,7 +16633,7 @@
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -16643,7 +16643,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -16653,7 +16653,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -16663,7 +16663,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -16856,7 +16856,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -16865,7 +16865,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -16875,7 +16875,7 @@
           [fieldValue read: inProtocol];
           [self setNote: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -17134,7 +17134,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -17145,7 +17145,7 @@
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -17155,7 +17155,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -17165,7 +17165,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -17175,7 +17175,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -17368,7 +17368,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -17377,7 +17377,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -17385,7 +17385,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setGuid: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -17639,7 +17639,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -17648,7 +17648,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setSuccess: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -17658,7 +17658,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -17668,7 +17668,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -17678,7 +17678,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -17869,7 +17869,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -17878,7 +17878,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -17886,7 +17886,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setGuid: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -18140,7 +18140,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -18149,7 +18149,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setSuccess: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -18159,7 +18159,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -18169,7 +18169,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -18179,7 +18179,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -18370,7 +18370,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -18379,7 +18379,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -18397,7 +18397,7 @@
           [inProtocol readListEnd];
           [self setNoteGuids: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -18659,7 +18659,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -18668,7 +18668,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setSuccess: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -18678,7 +18678,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -18688,7 +18688,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -18698,7 +18698,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -18848,7 +18848,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -18857,7 +18857,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -19061,7 +19061,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -19070,7 +19070,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setSuccess: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -19080,7 +19080,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -19090,7 +19090,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -19314,7 +19314,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -19323,7 +19323,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -19331,7 +19331,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setNoteGuid: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -19339,7 +19339,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setToNotebookGuid: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -19607,7 +19607,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -19618,7 +19618,7 @@
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -19628,7 +19628,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -19638,7 +19638,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -19648,7 +19648,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -19841,7 +19841,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -19850,7 +19850,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -19858,7 +19858,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setNoteGuid: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -20117,7 +20117,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -20138,7 +20138,7 @@
           [inProtocol readListEnd];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -20148,7 +20148,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -20158,7 +20158,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -20168,7 +20168,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -20513,7 +20513,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -20522,7 +20522,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -20530,7 +20530,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setNoteGuid: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -20538,7 +20538,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setUpdateSequenceNum: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -20546,7 +20546,7 @@
         if (fieldType == TType_BOOL) {
           BOOL fieldValue = [inProtocol readBool];
           [self setWithResourcesData: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -20554,7 +20554,7 @@
         if (fieldType == TType_BOOL) {
           BOOL fieldValue = [inProtocol readBool];
           [self setWithResourcesRecognition: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -20562,7 +20562,7 @@
         if (fieldType == TType_BOOL) {
           BOOL fieldValue = [inProtocol readBool];
           [self setWithResourcesAlternateData: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -20849,7 +20849,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -20860,7 +20860,7 @@
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -20870,7 +20870,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -20880,7 +20880,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -20890,7 +20890,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -21227,7 +21227,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -21236,7 +21236,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -21244,7 +21244,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setGuid: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -21252,7 +21252,7 @@
         if (fieldType == TType_BOOL) {
           BOOL fieldValue = [inProtocol readBool];
           [self setWithData: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -21260,7 +21260,7 @@
         if (fieldType == TType_BOOL) {
           BOOL fieldValue = [inProtocol readBool];
           [self setWithRecognition: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -21268,7 +21268,7 @@
         if (fieldType == TType_BOOL) {
           BOOL fieldValue = [inProtocol readBool];
           [self setWithAttributes: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -21276,7 +21276,7 @@
         if (fieldType == TType_BOOL) {
           BOOL fieldValue = [inProtocol readBool];
           [self setWithAlternateData: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -21563,7 +21563,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -21574,7 +21574,7 @@
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -21584,7 +21584,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -21594,7 +21594,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -21604,7 +21604,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -21797,7 +21797,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -21806,7 +21806,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -21816,7 +21816,7 @@
           [fieldValue read: inProtocol];
           [self setResource: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -22070,7 +22070,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -22079,7 +22079,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setSuccess: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -22089,7 +22089,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -22099,7 +22099,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -22109,7 +22109,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -22300,7 +22300,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -22309,7 +22309,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -22317,7 +22317,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setGuid: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -22576,7 +22576,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -22585,7 +22585,7 @@
         if (fieldType == TType_STRING) {
           NSData * fieldValue = [inProtocol readBinary];
           [self setSuccess: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -22595,7 +22595,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -22605,7 +22605,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -22615,7 +22615,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -22957,7 +22957,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -22966,7 +22966,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -22974,7 +22974,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setNoteGuid: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -22982,7 +22982,7 @@
         if (fieldType == TType_STRING) {
           NSData * fieldValue = [inProtocol readBinary];
           [self setContentHash: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -22990,7 +22990,7 @@
         if (fieldType == TType_BOOL) {
           BOOL fieldValue = [inProtocol readBool];
           [self setWithData: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -22998,7 +22998,7 @@
         if (fieldType == TType_BOOL) {
           BOOL fieldValue = [inProtocol readBool];
           [self setWithRecognition: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -23006,7 +23006,7 @@
         if (fieldType == TType_BOOL) {
           BOOL fieldValue = [inProtocol readBool];
           [self setWithAlternateData: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -23295,7 +23295,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -23306,7 +23306,7 @@
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -23316,7 +23316,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -23326,7 +23326,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -23336,7 +23336,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -23529,7 +23529,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -23538,7 +23538,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -23546,7 +23546,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setGuid: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -23805,7 +23805,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -23814,7 +23814,7 @@
         if (fieldType == TType_STRING) {
           NSData * fieldValue = [inProtocol readBinary];
           [self setSuccess: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -23824,7 +23824,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -23834,7 +23834,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -23844,7 +23844,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -24037,7 +24037,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -24046,7 +24046,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -24054,7 +24054,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setGuid: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -24313,7 +24313,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -24322,7 +24322,7 @@
         if (fieldType == TType_STRING) {
           NSData * fieldValue = [inProtocol readBinary];
           [self setSuccess: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -24332,7 +24332,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -24342,7 +24342,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -24352,7 +24352,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -24545,7 +24545,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -24554,7 +24554,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -24562,7 +24562,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setGuid: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -24821,7 +24821,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -24832,7 +24832,7 @@
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -24842,7 +24842,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -24852,7 +24852,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -24862,7 +24862,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -25014,7 +25014,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -25023,7 +25023,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -25227,7 +25227,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -25236,7 +25236,7 @@
         if (fieldType == TType_I64) {
           int64_t fieldValue = [inProtocol readI64];
           [self setSuccess: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -25246,7 +25246,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -25256,7 +25256,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -25439,7 +25439,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -25448,7 +25448,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -25458,7 +25458,7 @@
           [fieldValue read: inProtocol];
           [self setAdParameters: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -25676,7 +25676,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -25697,7 +25697,7 @@
           [inProtocol readListEnd];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -25707,7 +25707,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -25717,7 +25717,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -25910,7 +25910,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -25919,7 +25919,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -25929,7 +25929,7 @@
           [fieldValue read: inProtocol];
           [self setAdParameters: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -26147,7 +26147,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -26158,7 +26158,7 @@
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -26168,7 +26168,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -26178,7 +26178,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -26358,7 +26358,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -26367,7 +26367,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setUserId: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -26375,7 +26375,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setPublicUri: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -26591,7 +26591,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -26602,7 +26602,7 @@
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -26612,7 +26612,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -26622,7 +26622,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -26807,7 +26807,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -26816,7 +26816,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -26826,7 +26826,7 @@
           [fieldValue read: inProtocol];
           [self setSharedNotebook: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -27085,7 +27085,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -27096,7 +27096,7 @@
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -27106,7 +27106,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -27116,7 +27116,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -27126,7 +27126,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -27278,7 +27278,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -27287,7 +27287,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -27537,7 +27537,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -27558,7 +27558,7 @@
           [inProtocol readListEnd];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -27568,7 +27568,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -27578,7 +27578,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -27588,7 +27588,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -27789,7 +27789,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -27798,7 +27798,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -27816,7 +27816,7 @@
           [inProtocol readListEnd];
           [self setSharedNotebookIds: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -28078,7 +28078,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -28087,7 +28087,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setSuccess: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -28097,7 +28097,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -28107,7 +28107,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -28117,7 +28117,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -28308,7 +28308,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -28317,7 +28317,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -28327,7 +28327,7 @@
           [fieldValue read: inProtocol];
           [self setLinkedNotebook: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -28586,7 +28586,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -28597,7 +28597,7 @@
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -28607,7 +28607,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -28617,7 +28617,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -28627,7 +28627,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -28820,7 +28820,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -28829,7 +28829,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -28839,7 +28839,7 @@
           [fieldValue read: inProtocol];
           [self setLinkedNotebook: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -29098,7 +29098,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -29109,7 +29109,7 @@
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -29119,7 +29119,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -29129,7 +29129,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -29139,7 +29139,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -29291,7 +29291,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -29300,7 +29300,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -29550,7 +29550,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -29571,7 +29571,7 @@
           [inProtocol readListEnd];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -29581,7 +29581,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -29591,7 +29591,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -29601,7 +29601,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -29797,7 +29797,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -29806,7 +29806,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -29814,7 +29814,7 @@
         if (fieldType == TType_I64) {
           int64_t fieldValue = [inProtocol readI64];
           [self setLinkedNotebookId: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -30066,7 +30066,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -30075,7 +30075,7 @@
         if (fieldType == TType_I32) {
           int32_t fieldValue = [inProtocol readI32];
           [self setSuccess: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -30085,7 +30085,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -30095,7 +30095,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -30105,7 +30105,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -30296,7 +30296,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -30305,7 +30305,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setShareKey: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -30313,7 +30313,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -30572,7 +30572,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -30583,7 +30583,7 @@
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -30593,7 +30593,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -30603,7 +30603,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -30613,7 +30613,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -30765,7 +30765,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -30774,7 +30774,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -31024,7 +31024,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -31035,7 +31035,7 @@
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -31045,7 +31045,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -31055,7 +31055,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -31065,7 +31065,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -31258,7 +31258,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -31267,7 +31267,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setAuthenticationToken: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -31277,7 +31277,7 @@
           [fieldValue read: inProtocol];
           [self setParameters: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -31495,7 +31495,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -31506,7 +31506,7 @@
           [fieldValue read: inProtocol];
           [self setUserException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -31516,7 +31516,7 @@
           [fieldValue read: inProtocol];
           [self setNotFoundException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -31526,7 +31526,7 @@
           [fieldValue read: inProtocol];
           [self setSystemException: fieldValue];
           [fieldValue release];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;

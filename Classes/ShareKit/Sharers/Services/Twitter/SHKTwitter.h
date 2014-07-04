@@ -29,9 +29,9 @@
 #import "SHKOAuthSharer.h"
 #import "SHKTwitterForm.h"
 
-@interface SHKTwitter : SHKOAuthSharer 
-{	
-	BOOL xAuth;		
+@interface SHKTwitter : SHKOAuthSharer
+{
+	BOOL xAuth;
 }
 
 @property BOOL xAuth;

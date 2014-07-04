@@ -33,7 +33,7 @@
 - (void)SHKviewDidDisappear:(BOOL)animated
 {
 	[super viewDidDisappear:animated];
-	
+
 	// Remove the SHK view wrapper from the window
 	[[SHK currentHelper] viewWasDismissed];
 }
@@ -119,68 +119,68 @@
 
 
 - (BOOL)sendMail
-{	
+{
 	MFMailComposeViewController *mailController = [[[MFMailComposeViewController alloc] init] autorelease];
 	if (!mailController) {
 		// e.g. no mail account registered (will show alert)
 		[[SHK currentHelper] hideCurrentViewControllerAnimated:YES];
 		return YES;
 	}
-	
+
 	mailController.mailComposeDelegate = self;
-	
+
 	NSString *body = [item customValueForKey:@"body"];
 	NSString *subject = [item customValueForKey:@"subject"];
-	
+
 	if (body == nil)
 	{
 		if (item.text != nil)
 			body = item.text;
-		
+
 		if (item.URL != nil)
-		{	
-			NSString *urlStr = [item customValueForKey:@"shortenURL"]; 
-			if(urlStr==nil||urlStr.length==0) 
+		{
+			NSString *urlStr = [item customValueForKey:@"shortenURL"];
+			if(urlStr==nil||urlStr.length==0)
 				urlStr = [item.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-			
+
 			if (body != nil)
 				body = [body stringByAppendingFormat:@"<br/><br/>%@", urlStr];
 			else
 				body = urlStr;
 		}
-		
+
 		if (item.data)
 		{
 			NSString *attachedStr = SHKLocalizedString(@"Attached: %@", item.title ? item.title : item.filename);
-			
+
 			if (body != nil)
 				body = [body stringByAppendingFormat:@"<br/><br/>%@", attachedStr];
-			
+
 			else
 				body = attachedStr;
-			
+
 			[mailController addAttachmentData:item.data mimeType:item.mimeType fileName:item.filename];
 		}
-		
+
 		if (item.image)
-			[mailController addAttachmentData:UIImageJPEGRepresentation(item.image, 1) mimeType:@"image/jpeg" fileName:@"Image.jpg"];		
-		
+			[mailController addAttachmentData:UIImageJPEGRepresentation(item.image, 1) mimeType:@"image/jpeg" fileName:@"Image.jpg"];
+
 		// fallback
 		if (body == nil)
 			body = @"";
-		
+
 		// sig
 		body = [body stringByAppendingFormat:@"<br/><br/>Sent from %@", SHKMyAppName];
-		
+
 		// save changes to body
 		[item setCustomValue:body forKey:@"body"];
 	}
-	
+
 	[mailController setSubject:(subject != nil ? subject : item.title)];
 	[mailController setMessageBody:body isHTML:YES];
-			
+
 	[[SHK currentHelper] showViewController:mailController];
-	
+
 	return YES;
 }
 

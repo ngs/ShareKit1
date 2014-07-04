@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *    http://www.apache.org/licenses/LICENSE-2.0
 
  * Unless required by applicable law or agreed to in writing, software
@@ -96,7 +96,7 @@ static FBSession* sharedSession = nil;
   } else {
     [defaults removeObjectForKey:@"FBSessionExpires"];
   }
-  
+
   [defaults synchronize];
 }
 
@@ -170,8 +170,8 @@ static FBSession* sharedSession = nil;
     if (!sharedSession) {
       sharedSession = self;
     }
-    
-    _delegates = FBCreateNonRetainingArray();    
+
+    _delegates = FBCreateNonRetainingArray();
     _apiKey = [key copy];
     _apiSecret = [secret copy];
     _getSessionProxy = [getSessionProxy copy];
@@ -182,7 +182,7 @@ static FBSession* sharedSession = nil;
     _requestQueue = [[NSMutableArray alloc] init];
     _lastRequestTime = nil;
     _requestBurstCount = 0;
-    _requestTimer = nil;    
+    _requestTimer = nil;
   }
   return self;
 }
@@ -220,7 +220,7 @@ static FBSession* sharedSession = nil;
 }
 
 /////////////////////////////////////////////////////////////
-// gcorrales: Added support to remove and add delegates in 
+// gcorrales: Added support to remove and add delegates in
 // order to support distributed notification of events.
 /////////////////////////////////////////////////////////////
 - (void)addDelegate:(id<FBSessionDelegate>)delegate {
@@ -242,7 +242,7 @@ static FBSession* sharedSession = nil;
   _sessionKey = [sessionKey copy];
   _sessionSecret = [sessionSecret copy];
   _expirationDate = [expires retain];
-  
+
   [self save];
 }
 
@@ -285,7 +285,7 @@ static FBSession* sharedSession = nil;
     }
 
     [FBSession deleteFacebookCookies];
-    
+
 
     _uid = 0;
     [_sessionKey release];

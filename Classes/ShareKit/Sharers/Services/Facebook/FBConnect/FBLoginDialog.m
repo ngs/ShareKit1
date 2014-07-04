@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *    http://www.apache.org/licenses/LICENSE-2.0
 
  * Unless required by applicable law or agreed to in writing, software
@@ -36,7 +36,7 @@ static NSString* kLoginURL = @"http://www.facebook.com/login.php";
   if (!_session.apiSecret) {
     [params setObject:@"1" forKey:@"generate_session_secret"];
   }
-  
+
   if (_session.getSessionProxy) {
     [_getSessionRequest post:_session.getSessionProxy params:params];
   } else {
@@ -79,7 +79,7 @@ static NSString* kLoginURL = @"http://www.facebook.com/login.php";
   [_webView stringByEvaluatingJavaScriptFromString:@"email.blur();"];
 
   [_getSessionRequest cancel];
-  
+
   if (![_session isConnected]) {
     [_session cancelLogin];
   }
@@ -111,13 +111,13 @@ static NSString* kLoginURL = @"http://www.facebook.com/login.php";
   NSString* sessionSecret = [object objectForKey:@"secret"];
   NSTimeInterval expires = [[object objectForKey:@"expires"] floatValue];
   NSDate* expiration = expires ? [NSDate dateWithTimeIntervalSince1970:expires] : nil;
-  
+
   [_getSessionRequest release];
   _getSessionRequest = nil;
 
   [_session begin:uid sessionKey:sessionKey sessionSecret:sessionSecret expires:expiration];
   [_session resume];
-  
+
   [self dismissWithSuccess:YES animated:YES];
 }
 
@@ -127,5 +127,5 @@ static NSString* kLoginURL = @"http://www.facebook.com/login.php";
 
   [self dismissWithError:error animated:YES];
 }
- 
+
 @end

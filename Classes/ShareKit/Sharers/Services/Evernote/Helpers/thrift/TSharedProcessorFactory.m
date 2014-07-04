@@ -30,7 +30,7 @@
   if (!self) {
     return nil;
   }
-  
+
   mSharedProcessor = [sharedProcessor retain];
   return self;
 }

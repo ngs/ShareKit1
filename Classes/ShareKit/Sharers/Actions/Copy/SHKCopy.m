@@ -71,8 +71,8 @@
 #pragma mark -
 #pragma mark Share API Methods
 
-- (BOOL)send {	
-	
+- (BOOL)send {
+
 	if (item.shareType == SHKShareTypeURL) {
 		if(kSHKCopyShouldShortenURLs)
 			[self shortenURL];
@@ -88,9 +88,9 @@
 
 - (void)shortenURLFinished:(SHKRequest *)aRequest {
 	[super shortenURLFinished:aRequest];
-	
-	NSString *urlStr = [item customValueForKey:@"shortenURL"]; 
-	if(urlStr==nil||urlStr.length==0) 
+
+	NSString *urlStr = [item customValueForKey:@"shortenURL"];
+	if(urlStr==nil||urlStr.length==0)
 		urlStr = item.URL.absoluteString;
 	[self copyToPasteboard:urlStr];
 }

@@ -33,7 +33,7 @@
 - (void)SHKviewDidDisappear:(BOOL)animated
 {
 	[super viewDidDisappear:animated];
-	
+
 	// Remove the SHK view wrapper from the window (but only if the view doesn't have another modal over it)
 	if (self.modalViewController == nil)
 		[[SHK currentHelper] viewWasDismissed];
@@ -105,55 +105,55 @@
 - (BOOL)send
 {
 	self.quiet = YES;
-	
+
 	if (![self validateItem])
 		return NO;
-	
+
 	return [self sendText]; // Put the actual sending action in another method to make subclassing SHKTextMessage easier
 }
 
 - (BOOL)sendText
-{	
+{
 	MFMessageComposeViewController *composeView = [[[MFMessageComposeViewController alloc] init] autorelease];
 	composeView.messageComposeDelegate = self;
-	
+
 	NSString * body = [item customValueForKey:@"body"];
-	
+
 	if (!body) {
 		if (item.text != nil)
 			body = item.text;
-		
+
 		if (item.URL != nil)
-		{	
+		{
 			NSString *urlStr = [item.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-			
+
 			if (body != nil)
 				body = [body stringByAppendingFormat:@"<br/><br/>%@", urlStr];
-			
+
 			else
 				body = urlStr;
 		}
-		
+
 		// fallback
 		if (body == nil)
 			body = @"";
-		
+
 		// save changes to body
 		[item setCustomValue:body forKey:@"body"];
 	}
-	
+
 	[composeView setBody:body];
 	[[SHK currentHelper] showViewController:composeView];
-	
+
 	return YES;
 }
 
-- (void)messageComposeViewController:(MFMessageComposeViewController *)controller 
-				 didFinishWithResult:(MessageComposeResult)result 
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller
+				 didFinishWithResult:(MessageComposeResult)result
 {
-	
+
 	[[SHK currentHelper] hideCurrentViewControllerAnimated:YES];
-	
+
 	switch (result)
 	{
 		case MessageComposeResultCancelled:

@@ -21,26 +21,26 @@
 #pragma mark -
 #pragma mark Application lifecycle
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-    // Override point for customization after app launch    
-	
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Override point for customization after app launch
+
 	[window addSubview:[navigationController view]];
     [window makeKeyAndVisible];
-	
+
 	navigationController.topViewController.title = SHKLocalizedString(@"Examples");
 	[navigationController setToolbarHidden:NO];
-	
+
 	[self performSelector:@selector(testOffline) withObject:nil afterDelay:0.5];
-	
+
 	return YES;
 }
 
 - (void)testOffline
-{	
+{
 	[SHK flushOfflineQueue];
 }
 
-- (void)applicationWillTerminate:(UIApplication *)application 
+- (void)applicationWillTerminate:(UIApplication *)application
 {
 	// Save data if appropriate
 }

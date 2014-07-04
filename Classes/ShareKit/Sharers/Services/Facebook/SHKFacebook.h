@@ -29,7 +29,7 @@
 #import "SHKSharer.h"
 #import "FBConnect.h"
 
-typedef enum 
+typedef enum
 {
 	SHKFacebookPendingNone,
 	SHKFacebookPendingLogin,

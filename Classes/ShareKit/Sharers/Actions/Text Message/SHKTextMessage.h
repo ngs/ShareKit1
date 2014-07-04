@@ -31,7 +31,7 @@
 
 @interface SHKTextMessage : SHKSharer <MFMessageComposeViewControllerDelegate>
 {
-	
+
 }
 
 - (BOOL)sendText;

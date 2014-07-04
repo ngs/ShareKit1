@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *    http://www.apache.org/licenses/LICENSE-2.0
 
  * Unless required by applicable law or agreed to in writing, software
@@ -57,7 +57,7 @@ static CGFloat kBorderWidth = 10;
     CGContextScaleCTM(context, radius, radius);
     float fw = CGRectGetWidth(rect) / radius;
     float fh = CGRectGetHeight(rect) / radius;
-    
+
     CGContextMoveToPoint(context, fw, fh/2);
     CGContextAddArcToPoint(context, fw, fh, fw/2, fh, 1);
     CGContextAddArcToPoint(context, 0, fh, 0, fh/2, 1);
@@ -84,7 +84,7 @@ static CGFloat kBorderWidth = 10;
     }
     CGContextRestoreGState(context);
   }
-  
+
   CGColorSpaceRelease(space);
 }
 
@@ -96,7 +96,7 @@ static CGFloat kBorderWidth = 10;
   CGContextSetStrokeColorSpace(context, space);
   CGContextSetStrokeColor(context, strokeColor);
   CGContextSetLineWidth(context, 1.0);
-    
+
   {
     CGPoint points[] = {rect.origin.x+0.5, rect.origin.y-0.5,
       rect.origin.x+rect.size.width, rect.origin.y-0.5};
@@ -117,7 +117,7 @@ static CGFloat kBorderWidth = 10;
       rect.origin.x+0.5, rect.origin.y+rect.size.height};
     CGContextStrokeLineSegments(context, points, 2);
   }
-  
+
   CGContextRestoreGState(context);
 
   CGColorSpaceRelease(space);
@@ -215,7 +215,7 @@ static CGFloat kBorderWidth = 10;
       NSString* pair = [NSString stringWithFormat:@"%@=%@", key, val];
       [pairs addObject:pair];
     }
-      
+
     NSString* query = [pairs componentsJoinedByString:@"&"];
     NSString* url = [NSString stringWithFormat:@"%@?%@", baseURL, query];
     return [NSURL URLWithString:url];
@@ -228,19 +228,19 @@ static CGFloat kBorderWidth = 10;
   if (!params) {
     return nil;
   }
-  
+
   NSMutableData* body = [NSMutableData data];
   NSString* endLine = [NSString stringWithFormat:@"\r\n--%@\r\n", kStringBoundary];
 
   [body appendData:[[NSString stringWithFormat:@"--%@\r\n", kStringBoundary]
     dataUsingEncoding:NSUTF8StringEncoding]];
-  
+
   for (id key in [params keyEnumerator]) {
     [body appendData:[[NSString
       stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", key]
         dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[[params valueForKey:key] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[endLine dataUsingEncoding:NSUTF8StringEncoding]];        
+    [body appendData:[endLine dataUsingEncoding:NSUTF8StringEncoding]];
   }
 
   return body;
@@ -275,7 +275,7 @@ static CGFloat kBorderWidth = 10;
 
   [_loadingURL release];
   _loadingURL = nil;
-  
+
   if (animated) {
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:kTransitionDuration];
@@ -306,18 +306,18 @@ static CGFloat kBorderWidth = 10;
     _loadingURL = nil;
     _orientation = UIDeviceOrientationUnknown;
     _showingKeyboard = NO;
-    
+
     self.backgroundColor = [UIColor clearColor];
     self.autoresizesSubviews = YES;
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.contentMode = UIViewContentModeRedraw;
-    
+
     UIImage* iconImage = [UIImage imageNamed:@"FBConnect.bundle/images/fbicon.png"];
     UIImage* closeImage = [UIImage imageNamed:@"FBConnect.bundle/images/close.png"];
-    
+
     _iconView = [[UIImageView alloc] initWithImage:iconImage];
     [self addSubview:_iconView];
-    
+
     UIColor* color = [UIColor colorWithRed:167.0/255 green:184.0/255 blue:216.0/255 alpha:1];
     _closeButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
     [_closeButton setImage:closeImage forState:UIControlStateNormal];
@@ -325,14 +325,14 @@ static CGFloat kBorderWidth = 10;
     [_closeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     [_closeButton addTarget:self action:@selector(cancel)
       forControlEvents:UIControlEventTouchUpInside];
-	
+
 	_closeButton.titleLabel.font = [UIFont boldSystemFontOfSize:12];
-	
+
 	_closeButton.showsTouchWhenHighlighted = YES;
     _closeButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin
       | UIViewAutoresizingFlexibleBottomMargin;
     [self addSubview:_closeButton];
-    
+
     CGFloat titleLabelFontSize = (FBIsDeviceIPad() ? 18 : 14);
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     _titleLabel.text = kDefaultTitle;
@@ -342,7 +342,7 @@ static CGFloat kBorderWidth = 10;
     _titleLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin
       | UIViewAutoresizingFlexibleBottomMargin;
     [self addSubview:_titleLabel];
-        
+
     _webView = [[UIWebView alloc] initWithFrame:CGRectZero];
     _webView.delegate = self;
     _webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -410,7 +410,7 @@ static CGFloat kBorderWidth = 10;
         return NO;
       }
     }
-    
+
     [[UIApplication sharedApplication] openURL:request.URL];
     return NO;
   } else {
@@ -420,10 +420,10 @@ static CGFloat kBorderWidth = 10;
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
   [webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('cancel').onclick = function onclick(event) { window.location.href = 'fbconnect:cancel'; }"];
-	
+
   [_spinner stopAnimating];
   _spinner.hidden = YES;
-  
+
   self.title = [_webView stringByEvaluatingJavaScriptFromString:@"document.title"];
   [self updateWebOrientation];
 }
@@ -456,7 +456,7 @@ static CGFloat kBorderWidth = 10;
 
 - (void)keyboardWillShow:(NSNotification*)notification {
   if (FBIsDeviceIPad()) {
-    // On the iPad the screen is large enough that we don't need to 
+    // On the iPad the screen is large enough that we don't need to
     // resize the dialog to accomodate the keyboard popping up
     return;
   }
@@ -484,7 +484,7 @@ static CGFloat kBorderWidth = 10;
 
   _showingKeyboard = NO;
 }
- 
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // public
 
@@ -500,7 +500,7 @@ static CGFloat kBorderWidth = 10;
   [self load];
   [self sizeToFitOrientation:NO];
 
-  CGFloat innerWidth = self.frame.size.width - (kBorderWidth+1)*2;  
+  CGFloat innerWidth = self.frame.size.width - (kBorderWidth+1)*2;
   [_iconView sizeToFit];
   [_titleLabel sizeToFit];
   [_closeButton sizeToFit];
@@ -510,7 +510,7 @@ static CGFloat kBorderWidth = 10;
     kBorderWidth,
     innerWidth - (_titleLabel.frame.size.height + _iconView.frame.size.width + kTitleMarginX*2),
     _titleLabel.frame.size.height + kTitleMarginY*2);
-  
+
   _iconView.frame = CGRectMake(
     kBorderWidth + kTitleMarginX,
     kBorderWidth + floor(_titleLabel.frame.size.height/2 - _iconView.frame.size.height/2),
@@ -522,7 +522,7 @@ static CGFloat kBorderWidth = 10;
     kBorderWidth,
     _titleLabel.frame.size.height,
     _titleLabel.frame.size.height);
-  
+
   _webView.frame = CGRectMake(
     kBorderWidth+1,
     kBorderWidth + _titleLabel.frame.size.height,
@@ -540,7 +540,7 @@ static CGFloat kBorderWidth = 10;
   [window addSubview:self];
 
   [self dialogWillAppear];
-    
+
   self.transform = CGAffineTransformScale([self transformForOrientation], 0.001, 0.001);
   [UIView beginAnimations:nil context:nil];
   [UIView setAnimationDuration:kTransitionDuration/1.5];
@@ -594,7 +594,7 @@ static CGFloat kBorderWidth = 10;
   [_loadingURL release];
   _loadingURL = [[self generateURL:url params:getParams] retain];
   NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:_loadingURL];
-  
+
   if (method) {
     [request setHTTPMethod:method];
 

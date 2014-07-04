@@ -42,7 +42,7 @@
 @end
 
 
-typedef enum 
+typedef enum
 {
 	SHKPendingNone,
 	SHKPendingShare,
@@ -51,15 +51,15 @@ typedef enum
 
 
 @interface SHKSharer : UINavigationController <SHKSharerDelegate>
-{	
+{
 	id shareDelegate;
-	
+
 	SHKItem *item;
 	SHKFormController *pendingForm;
 	SHKRequest *request;
-		
+
 	NSError *lastError;
-	
+
 	BOOL quiet;
 	SHKSharerPendingAction pendingAction;
 }

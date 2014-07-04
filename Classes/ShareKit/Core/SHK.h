@@ -41,13 +41,13 @@
 @class SHKViewControllerWrapper;
 
 
-@interface SHK : NSObject 
+@interface SHK : NSObject
 {
 	UIViewController *rootViewController;
 	UIViewController *currentView;
 	UIViewController *pendingView;
 	BOOL isDismissingView;
-	
+
 	NSOperationQueue *offlineQueue;
 }
 

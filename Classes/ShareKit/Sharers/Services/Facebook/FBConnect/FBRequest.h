@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *    http://www.apache.org/licenses/LICENSE-2.0
 
  * Unless required by applicable law or agreed to in writing, software
@@ -72,7 +72,7 @@
 /**
  * The dictionary of parameters to pass to the method.
  *
- * These values in the dictionary will be converted to strings using the 
+ * These values in the dictionary will be converted to strings using the
  * standard Objective-C object-to-string conversion facilities.
  */
 @property(nonatomic,readonly) NSDictionary* params;
@@ -104,21 +104,21 @@
  * Calls a method on the server asynchronously.
  *
  * The delegate will be called for each stage of the loading process.
- */ 
+ */
 - (void)call:(NSString*)method params:(NSDictionary*)params;
 
 /**
  * Calls a method on the server asynchronously, with a file upload component.
  *
  * The delegate will be called for each stage of the loading process.
- */ 
+ */
 - (void)call:(NSString*)method params:(NSDictionary*)params dataParam:(NSData*)dataParam;
 
 /**
  * Calls a URL on the server asynchronously.
  *
  * The delegate will be called for each stage of the loading process.
- */ 
+ */
 - (void)post:(NSString*)url params:(NSDictionary*)params;
 
 /**

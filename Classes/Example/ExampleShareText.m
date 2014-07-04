@@ -48,41 +48,41 @@
 							 nil
 							 ];
 	}
-	
+
 	return self;
 }
 
-- (void)loadView 
+- (void)loadView
 {
 	[super loadView];
-	
+
 	self.textView = [[UITextView alloc] initWithFrame:CGRectMake(0,0,self.view.bounds.size.width,self.view.bounds.size.height)];
 	[self.view addSubview:textView];
-	
+
 	textView.text = @"This is a chunk of text.  If you highlight it, you'll be able to share the selection.  If you tap the share button below, it will share all of it.";
 	textView.editable = NO;
-	
+
 	[textView release];
 }
 
 - (void)share
-{	
+{
 	NSString *text;
-	
+
 	if (textView.selectedRange.length > 0)
 		text = [textView.text substringWithRange:textView.selectedRange];
-	
+
 	else
 		text = textView.text;
 
-	
+
 	SHKItem *item = [SHKItem text:text];
 	SHKActionSheet *actionSheet = [SHKActionSheet actionSheetForItem:item];
-	
+
 	[actionSheet showFromToolbar:self.navigationController.toolbar];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
 }

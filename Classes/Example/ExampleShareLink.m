@@ -49,7 +49,7 @@
 								nil
 							];
 	}
-	
+
 	return self;
 }
 
@@ -57,21 +57,21 @@
 {
 	SHKItem *item = [SHKItem URL:webView.request.URL title:[webView pageTitle]];
 	SHKActionSheet *actionSheet = [SHKActionSheet actionSheetForItem:item];
-	[actionSheet showFromToolbar:self.navigationController.toolbar]; 
+	[actionSheet showFromToolbar:self.navigationController.toolbar];
 }
 
-- (void)loadView 
-{ 
+- (void)loadView
+{
 	self.webView = [[UIWebView alloc] initWithFrame:CGRectZero];
 	webView.delegate = self;
 	webView.scalesPageToFit = YES;
 	[webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://apple.com"]]];
-		
+
 	self.view = webView;
 	[webView release];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
 }

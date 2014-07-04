@@ -124,7 +124,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -133,7 +133,7 @@
         if (fieldType == TType_I32) {
           int fieldValue = [inProtocol readI32];
           [self setErrorCode: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -141,7 +141,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setParameter: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -288,7 +288,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -297,7 +297,7 @@
         if (fieldType == TType_I32) {
           int fieldValue = [inProtocol readI32];
           [self setErrorCode: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -305,7 +305,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setMessage: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -457,7 +457,7 @@
   while (true)
   {
     [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
+    if (fieldType == TType_STOP) {
       break;
     }
     switch (fieldID)
@@ -466,7 +466,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setIdentifier: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
@@ -474,7 +474,7 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setKey: fieldValue];
-        } else { 
+        } else {
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;

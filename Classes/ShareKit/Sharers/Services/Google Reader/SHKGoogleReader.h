@@ -28,7 +28,7 @@
 #import <Foundation/Foundation.h>
 #import "SHKSharer.h"
 
-@interface SHKGoogleReader : SHKSharer 
+@interface SHKGoogleReader : SHKSharer
 {
 	NSMutableDictionary *session;
 	BOOL sendAfterLogin;

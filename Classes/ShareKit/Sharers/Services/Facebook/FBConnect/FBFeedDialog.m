@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *    http://www.apache.org/licenses/LICENSE-2.0
 
  * Unless required by applicable law or agreed to in writing, software
@@ -34,7 +34,7 @@ static NSString* kFeedURL = @"http://www.facebook.com/connect/prompt_feed.php";
 
 - (NSString*)generateFeedInfo {
   NSMutableArray* pairs = [NSMutableArray array];
-  
+
   if (_templateBundleId) {
     [pairs addObject:[NSString stringWithFormat:@"\"template_id\": %lld", _templateBundleId]];
   }
@@ -44,7 +44,7 @@ static NSString* kFeedURL = @"http://www.facebook.com/connect/prompt_feed.php";
   if (_bodyGeneral) {
     [pairs addObject:[NSString stringWithFormat:@"\"body_general\": \"%@\"", _bodyGeneral]];
   }
-  
+
   return [NSString stringWithFormat:@"{%@}", [pairs componentsJoinedByString:@","]];
 }
 
@@ -76,7 +76,7 @@ static NSString* kFeedURL = @"http://www.facebook.com/connect/prompt_feed.php";
   NSString* feedInfo = [self generateFeedInfo];
   NSDictionary* postParams = [NSDictionary dictionaryWithObjectsAndKeys:
     _session.apiKey, @"api_key", _session.sessionKey, @"session_key",
-    @"1", @"preview", @"fbconnect:success", @"callback", @"fbconnect:cancel", @"cancel", 
+    @"1", @"preview", @"fbconnect:success", @"callback", @"fbconnect:cancel", @"cancel",
     feedInfo, @"feed_info", @"self_feed", @"feed_target_type", nil];
 
   [self loadURL:kFeedURL method:@"POST" get:getParams post:postParams];

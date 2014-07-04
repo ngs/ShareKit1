@@ -33,7 +33,7 @@
 
 #pragma mark init
 
-- (id)init 
+- (id)init
 {
 	if (self = [super init])
 	{
@@ -44,7 +44,7 @@
     return self;
 }
 
-- (id)initWithKey:(NSString *)aKey secret:(NSString *)aSecret 
+- (id)initWithKey:(NSString *)aKey secret:(NSString *)aSecret
 {
 	if (self = [super init])
 	{
@@ -54,12 +54,12 @@
 	return self;
 }
 
-- (id)initWithHTTPResponseBody:(NSString *)body 
+- (id)initWithHTTPResponseBody:(NSString *)body
 {
 	if (self = [super init])
 	{
 		NSArray *pairs = [body componentsSeparatedByString:@"&"];
-		
+
 		for (NSString *pair in pairs) {
 			NSArray *elements = [pair componentsSeparatedByString:@"="];
 			if ([[elements objectAtIndex:0] isEqualToString:@"oauth_token"]) {
@@ -70,7 +70,7 @@
 				self.sessionHandle = [[elements objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 			}
 		}
-	}    
+	}
     return self;
 }
 

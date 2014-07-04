@@ -27,11 +27,11 @@
 
 
 /*
- 
+
 Google Reader API is unoffical, this was hobbled together from:
  http://code.google.com/p/pyrfeed/wiki/GoogleReaderAPI
  http://stackoverflow.com/questions/1041389/adding-notes-using-google-readers-api
- http://www.google.com/support/reader/bin/answer.py?hl=en&answer=147149 
+ http://www.google.com/support/reader/bin/answer.py?hl=en&answer=147149
 */
 
 
@@ -79,7 +79,7 @@ Google Reader API is unoffical, this was hobbled together from:
 {
 	return [NSArray arrayWithObjects:
 			[SHKFormFieldSettings label:SHKLocalizedString(@"Email") key:@"email" type:SHKFormFieldTypeText start:nil],
-			[SHKFormFieldSettings label:SHKLocalizedString(@"Password") key:@"password" type:SHKFormFieldTypePassword start:nil],			
+			[SHKFormFieldSettings label:SHKLocalizedString(@"Password") key:@"password" type:SHKFormFieldTypePassword start:nil],
 			nil];
 }
 
@@ -88,14 +88,14 @@ Google Reader API is unoffical, this was hobbled together from:
 	// Display an activity indicator
 	if (!quiet)
 		[[SHKActivityIndicator currentIndicator] displayActivity:SHKLocalizedString(@"Logging In...")];
-	
-	
+
+
 	// Authorize the user through the server
 	NSDictionary *formValues = [form formValues];
-	
+
 	[self getSession:[formValues objectForKey:@"email"]
 			password:[formValues objectForKey:@"password"]];
-	
+
 	self.pendingForm = form;
 }
 
@@ -106,7 +106,7 @@ Google Reader API is unoffical, this was hobbled together from:
 						SHKEncode(email),
 						SHKEncode(password)
 						];
-	
+
 	self.request = [[[SHKRequest alloc] initWithURL:[NSURL URLWithString:@"https://www.google.com/accounts/ClientLogin"]
 											params:params
 										  delegate:self
@@ -116,19 +116,19 @@ Google Reader API is unoffical, this was hobbled together from:
 }
 
 - (void)authFinished:(SHKRequest *)aRequest
-{		
+{
 	// TODO - better error handling - use error codes from ( http://code.google.com/apis/accounts/docs/AuthForInstalledApps.html )
 	// TODO - capatcha support
-	
+
 	// Hide the activity indicator
 	if (!sendAfterLogin)
 		[[SHKActivityIndicator currentIndicator] hide];
-	
+
 	// Parse Result
 	self.session = [NSMutableDictionary dictionaryWithCapacity:0];
 	NSString *result = [request getResult];
 	NSArray *parts;
-	
+
 	if (result != nil)
 	{
 		NSArray *lines = [result componentsSeparatedByString:@"\n"];
@@ -139,32 +139,32 @@ Google Reader API is unoffical, this was hobbled together from:
 				[session setObject:[parts objectAtIndex:1] forKey:[parts objectAtIndex:0]];
 		}
 	}
-	
+
 	if (session != nil && [session objectForKey:@"Auth"])
 	{
 		if (sendAfterLogin)
 			[self tryToSend];
-		
+
 		else
 			[pendingForm saveForm];
 	}
-	
+
 	else
-	{		
+	{
 		NSString *error = [session objectForKey:@"Error"];
 		NSString *message = nil;
-		
+
 		if (error != nil)
 			message = [error isEqualToString:@"BadAuthentication"] ? SHKLocalizedString(@"Incorrect username and password") : error;
-		
+
 		if (message == nil) // TODO - Could use some clearer message here.
-			message = SHKLocalizedString(@"There was an error logging into Google Reader");			
-		
+			message = SHKLocalizedString(@"There was an error logging into Google Reader");
+
 		[[[[UIAlertView alloc] initWithTitle:SHKLocalizedString(@"Login Error")
 									 message:message
 									delegate:nil
 						   cancelButtonTitle:SHKLocalizedString(@"Close")
-						   otherButtonTitles:nil] autorelease] show];	
+						   otherButtonTitles:nil] autorelease] show];
 	}
 }
 
@@ -179,7 +179,7 @@ Google Reader API is unoffical, this was hobbled together from:
 				[SHKFormFieldSettings label:SHKLocalizedString(@"Note") key:@"text" type:SHKFormFieldTypeText start:item.text],
 				[SHKFormFieldSettings label:SHKLocalizedString(@"Public") key:@"share" type:SHKFormFieldTypeSwitch start:SHKFormFieldSwitchOff],
 				nil];
-	
+
 	return nil;
 }
 
@@ -188,16 +188,16 @@ Google Reader API is unoffical, this was hobbled together from:
 #pragma mark Share API Methods
 
 - (void)signRequest:(SHKRequest *)aRequest
-{	
+{
 	// Add session cookie
 	NSDictionary *cookieDictionary;
 	NSHTTPCookie *cookie;
 	NSMutableArray *cookies = [NSMutableArray arrayWithCapacity:0];
 	for (NSString *cookieName in session)
 	{
-			
+
 		cookieDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-										  cookieName, NSHTTPCookieName,										  
+										  cookieName, NSHTTPCookieName,
 										  [session objectForKey:cookieName], NSHTTPCookieValue,
 										  @".google.com", NSHTTPCookieDomain,
 										  @"/", NSHTTPCookiePath,
@@ -207,18 +207,18 @@ Google Reader API is unoffical, this was hobbled together from:
 		[cookies addObject:cookie];
 	}
 	NSMutableDictionary *headers = [[[NSHTTPCookie requestHeaderFieldsWithCookies:cookies] mutableCopy] autorelease];
-	
+
 	[headers setObject:[NSString stringWithFormat:@"GoogleLogin auth=%@",[session objectForKey:@"Auth"]] forKey:@"Authorization"];
-	
+
 	[aRequest setHeaderFields:headers];
 }
 
 - (BOOL)send
-{	
+{
 	if ([self validateItem])
-	{	
+	{
 		BOOL sentAfterLogin = sendAfterLogin;
-		
+
 		if (session == nil)
 		{
 			// Login first
@@ -226,12 +226,12 @@ Google Reader API is unoffical, this was hobbled together from:
 			[self getSession:[self getAuthValueForKey:@"email"]
 					password:[self getAuthValueForKey:@"password"]];
 		}
-		
-		else 
-		{		
-			
+
+		else
+		{
+
 			self.sendAfterLogin = NO;
-			
+
 			self.request = [[[SHKRequest alloc] initWithURL:[NSURL URLWithString:
 															 [NSString stringWithFormat:
 															  @"http://www.google.com/reader/api/0/token?ck=%i",
@@ -243,58 +243,58 @@ Google Reader API is unoffical, this was hobbled together from:
 																   method:@"GET"
 																autostart:NO] autorelease];
 			[self signRequest:request];
-			[request start];	
-		}			
-			
+			[request start];
+		}
+
 		// Notify delegate
 		if (!sentAfterLogin)
 			[self sendDidStart];
-		
+
 		return YES;
 	}
-	
+
 	return NO;
 }
 
 - (void)tokenFinished:(SHKRequest *)aRequest
-{	
+{
 	if (aRequest.success)
 		[self sendWithToken:[request getResult]];
-	
+
 	else
 		[self sendDidFailWithError:[SHK error:SHKLocalizedString(@"There was a problem authenticating your account.")]]; // TODO better error handling/message
 }
 
 - (void)sendWithToken:(NSString *)token
-{		
+{
 	NSString *params = [NSMutableString stringWithFormat:@"T=%@&linkify=false&snippet=%@&srcTitle=%@&srcUrl=%@&title=%@&url=%@&share=%@",
 						token,
 						SHKEncode(item.text),
 						SHKEncode(SHKMyAppName),
-						SHKEncode(SHKMyAppURL),		
-						SHKEncode(item.title),					
+						SHKEncode(SHKMyAppURL),
+						SHKEncode(item.title),
 						SHKEncodeURL(item.URL),
 						[item customBoolForSwitchKey:@"share"]?@"true":@""
 						];
-	
+
 	self.request = [[[SHKRequest alloc] initWithURL:[NSURL URLWithString:@"https://www.google.com/reader/api/0/item/edit"]
 								 params:params
 							   delegate:self
 					 isFinishedSelector:@selector(sendFinished:)
 								 method:@"POST"
 							  autostart:NO] autorelease];
-	
-	[self signRequest:request];	
+
+	[self signRequest:request];
 	[request start];
 }
 
 - (void)sendFinished:(SHKRequest *)aRequest
-{			
+{
 	if (aRequest.success)
 		[self sendDidFinish];
-	
+
 	else
-		[self sendDidFailWithError:[SHK error:SHKLocalizedString(@"There was a problem saving your note.")]]; // TODO better error handling/message	
+		[self sendDidFailWithError:[SHK error:SHKLocalizedString(@"There was a problem saving your note.")]]; // TODO better error handling/message
 }
 
 

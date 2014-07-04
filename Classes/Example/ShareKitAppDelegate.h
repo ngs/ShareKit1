@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ShareKitAppDelegate : NSObject <UIApplicationDelegate> {
-    
+
     UIWindow *window;
     UINavigationController *navigationController;
 }

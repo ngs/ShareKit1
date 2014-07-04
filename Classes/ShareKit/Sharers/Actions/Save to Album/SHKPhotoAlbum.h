@@ -28,7 +28,7 @@
 #import <Foundation/Foundation.h>
 #import "SHKSharer.h"
 
-@interface SHKPhotoAlbum : SHKSharer 
+@interface SHKPhotoAlbum : SHKSharer
 {
 
 }

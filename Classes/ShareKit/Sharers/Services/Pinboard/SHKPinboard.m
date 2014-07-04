@@ -56,14 +56,14 @@
 
 - (void)authorizationFormValidate:(SHKFormController *)form
 {
-	// Display an activity indicator	
+	// Display an activity indicator
 	if (!quiet)
 		[[SHKActivityIndicator currentIndicator] displayActivity:SHKLocalizedString(@"Logging In...")];
-	
-	
+
+
 	// Authorize the user through the server
 	NSDictionary *formValues = [form formValues];
-	
+
 	NSString *password = [SHKEncode([formValues objectForKey:@"password"]) stringByReplacingOccurrencesOfString:@"/" withString:@"%2F"];
 	self.request = [[[SHKRequest alloc] initWithURL:[NSURL URLWithString:
 													[NSString stringWithFormat:@"https://%@:%@@api.pinboard.in/v1/posts/get",
@@ -75,28 +75,28 @@
 								isFinishedSelector:@selector(authFinished:)
 											method:@"POST"
 										 autostart:YES] autorelease];
-	
+
 	self.pendingForm = form;
 }
 
 - (BOOL)handleResponse:(SHKRequest *)aRequest
 {
 	NSString *response = [aRequest getResult];
-	
+
 	if ([response isEqualToString:SHKLocalizedString(@"401 Forbidden")])
 	{
-		[self sendDidFailShouldRelogin];		
-		return NO;		
-	} 
-	
+		[self sendDidFailShouldRelogin];
+		return NO;
+	}
+
 	return YES;
 }
 
 - (void)authFinished:(SHKRequest *)aRequest
-{	
+{
 	// Hide the activity indicator
 	[[SHKActivityIndicator currentIndicator] hide];
-	
+
 	if ([self handleResponse:aRequest])
 	{
 		[pendingForm saveForm];
@@ -116,7 +116,7 @@
 				[SHKFormFieldSettings label:SHKLocalizedString(@"Notes") key:@"text" type:SHKFormFieldTypeText start:item.text],
 				[SHKFormFieldSettings label:SHKLocalizedString(@"Shared") key:@"shared" type:SHKFormFieldTypeSwitch start:SHKFormFieldSwitchOff],
 				nil];
-	
+
 	return nil;
 }
 
@@ -126,9 +126,9 @@
 #pragma mark Share API Methods
 
 - (BOOL)send
-{	
+{
 	if ([self validateItem])
-	{			
+	{
 		NSString *password = [SHKEncode([self getAuthValueForKey:@"password"]) stringByReplacingOccurrencesOfString:@"/" withString:@"%2F"];
 		self.request = [[[SHKRequest alloc] initWithURL:[NSURL URLWithString:
 														[NSString stringWithFormat:@"https://%@:%@@api.pinboard.in/v1/posts/add?url=%@&description=%@&tags=%@&extended=%@&shared=%@",
@@ -145,31 +145,31 @@
 									isFinishedSelector:@selector(sendFinished:)
 												method:@"GET"
 											 autostart:YES] autorelease];
-		
-		
+
+
 		// Notify delegate
 		[self sendDidStart];
-		
+
 		return YES;
 	}
-	
+
 	return NO;
 }
 
 - (void)sendFinished:(SHKRequest *)aRequest
-{	
+{
 	if ([self handleResponse:aRequest])
 	{
 		// TODO parse <result code="MESSAGE" to get response from api for better error message
-		
+
 		if ([[aRequest getResult] rangeOfString:@"\"done\""].location != NSNotFound)
 		{
 			[self sendDidFinish];
 			return;
 		}
 	}
-	
-	[self sendDidFailWithError:[SHK error:SHKLocalizedString(@"There was an error saving to Pinboard")]];		
+
+	[self sendDidFailWithError:[SHK error:SHKLocalizedString(@"There was an error saving to Pinboard")]];
 }
 
 @end

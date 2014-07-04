@@ -39,7 +39,7 @@
 #pragma mark -
 #pragma mark Initialization
 
-- (void)dealloc 
+- (void)dealloc
 {
 	[item release];
 	[tableData release];
@@ -53,16 +53,16 @@
 	if (self = [super initWithStyle:style])
 	{
 		self.title = SHKLocalizedString(@"Share");
-		
+
 		self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
 																							  target:self
 																							  action:@selector(cancel)] autorelease];
-		
+
 		self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:SHKLocalizedString(@"Edit")
 																				  style:UIBarButtonItemStyleBordered
 																				 target:self
 																				 action:@selector(edit)] autorelease];
-		
+
 	}
 	return self;
 }
@@ -70,7 +70,7 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
 	[super viewDidDisappear:animated];
-	
+
 	// Remove the SHK view wrapper from the window
 	[[SHK currentHelper] viewWasDismissed];
 }
@@ -80,7 +80,7 @@
 {
 	[item release];
 	item = [i retain];
-	
+
 	[self rebuildTableDataAnimated:NO];
 }
 
@@ -90,79 +90,79 @@
 	self.tableData = [NSMutableArray arrayWithCapacity:0];
 	[tableData addObject:[self section:@"actions"]];
 	[tableData addObject:[self section:@"services"]];
-		
+
 	// Handling Excluded items
 	// If in editing mode, show them
 	// If not editing, hide them
 	self.exclusions = [[[[NSUserDefaults standardUserDefaults] objectForKey:@"SHKExcluded"] mutableCopy] autorelease];
-	
+
 	if (exclusions == nil)
 		self.exclusions = [NSMutableDictionary dictionaryWithCapacity:0];
-	
+
 	NSMutableArray *excluded = [NSMutableArray arrayWithCapacity:0];
-		
+
 	if (!self.tableView.editing || animated)
 	{
 		int s = 0;
 		int r = 0;
-		
+
 		// Use temp objects so we can mutate as we are enumerating
 		NSMutableArray *sectionCopy;
 		NSMutableDictionary *tableDataCopy = [[tableData mutableCopy] autorelease];
 		NSMutableIndexSet *indexes = [[NSMutableIndexSet alloc] init];
-				
+
 		for(NSMutableArray *section in tableDataCopy)
 		{
 			r = 0;
 			[indexes removeAllIndexes];
-			
+
 			sectionCopy = [[section mutableCopy] autorelease];
-			
+
 			for (NSMutableDictionary *row in section)
 			{
 				if ([exclusions objectForKey:[row objectForKey:@"className"]])
 				{
 					[excluded addObject:[NSIndexPath indexPathForRow:r inSection:s]];
-					
+
 					if (!self.tableView.editing)
 						[indexes addIndex:r];
 				}
-				
+
 				r++;
 			}
-				
+
 			if (!self.tableView.editing)
 			{
 				[sectionCopy removeObjectsAtIndexes:indexes];
 				[tableData replaceObjectAtIndex:s withObject:sectionCopy];
 			}
-			
+
 			s++;
 		}
-		
+
 		[indexes release];
-		
+
 		if (animated)
 		{
-			[self.tableView beginUpdates];	
-			
+			[self.tableView beginUpdates];
+
 			if (!self.tableView.editing)
-				[self.tableView deleteRowsAtIndexPaths:excluded withRowAnimation:UITableViewRowAnimationFade];		
+				[self.tableView deleteRowsAtIndexPaths:excluded withRowAnimation:UITableViewRowAnimationFade];
 			else
-				[self.tableView insertRowsAtIndexPaths:excluded withRowAnimation:UITableViewRowAnimationFade];		
-			
+				[self.tableView insertRowsAtIndexPaths:excluded withRowAnimation:UITableViewRowAnimationFade];
+
 			[self.tableView endUpdates];
 		}
 	}
-	
+
 }
 
 - (NSMutableArray *)section:(NSString *)section
 {
 	id class;
-	NSMutableArray *sectionData = [NSMutableArray arrayWithCapacity:0];	
+	NSMutableArray *sectionData = [NSMutableArray arrayWithCapacity:0];
 	NSArray *source = [[SHK sharersDictionary] objectForKey:section];
-	
+
 	for( NSString *sharerClassName in source)
 	{
 		class = NSClassFromString(sharerClassName);
@@ -172,14 +172,14 @@
 
 	if (sectionData.count && SHKShareMenuAlphabeticalOrder)
 		[sectionData sortUsingDescriptors:[NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)] autorelease]]];
-	
+
 	return sectionData;
 }
 
 #pragma mark -
 #pragma mark View lifecycle
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
 }
@@ -188,33 +188,33 @@
 #pragma mark -
 #pragma mark Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return tableData.count;
 }
 
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [[tableData objectAtIndex:section] count];
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
-{    
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     static NSString *CellIdentifier = @"Cell";
-    
+
     SHKCustomShareMenuCell *cell = (SHKCustomShareMenuCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
 	{
         cell = [[[SHKCustomShareMenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
-    
+
 	NSDictionary *rowData = [self rowDataAtIndexPath:indexPath];
 	cell.textLabel.text = [rowData objectForKey:@"name"];
 	cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.%@",[rowData objectForKey:@"className"],@"png"]];
-    
+
 	if (cell.editingAccessoryView == nil)
 	{
 		UISwitch *toggle = [[UISwitch alloc] initWithFrame:CGRectZero];
@@ -222,14 +222,14 @@
 		cell.editingAccessoryView = toggle;
 		[toggle release];
 	}
-	
+
 	[(UISwitch *)cell.editingAccessoryView setOn:[exclusions objectForKey:[rowData objectForKey:@"className"]] == nil];
-	
+
     return cell;
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
-{	
+{
 	return UITableViewCellEditingStyleNone;
 }
 
@@ -242,31 +242,31 @@
 #pragma mark -
 #pragma mark Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	NSDictionary *rowData = [self rowDataAtIndexPath:indexPath];
-	
+
 	if (tableView.editing)
 	{
 		UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-		
+
 		UISwitch *toggle = (UISwitch *)[cell editingAccessoryView];
 		BOOL newOn = !toggle.on;
 		[toggle setOn:newOn animated:YES];
-		
+
 		if (newOn)
 			[exclusions removeObjectForKey:[rowData objectForKey:@"className"]];
-		
-		else 
+
+		else
 			[exclusions setObject:@"1" forKey:[rowData objectForKey:@"className"]];
 
 		[self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 	}
-	
-	else 
+
+	else
 	{
 		[NSClassFromString([rowData objectForKey:@"className"]) shareItem:item];
-		
+
 		[[SHK currentHelper] hideCurrentViewControllerAnimated:YES];
 	}
 }
@@ -282,11 +282,11 @@
 	{
 		if (section == 0)
 			return SHKLocalizedString(@"Actions");
-		
+
 		else if (section == 1)
 			return SHKLocalizedString(@"Services");
 	}
-	
+
 	return nil;
 }
 
@@ -303,7 +303,7 @@
 {
 	[self.tableView setEditing:YES animated:YES];
 	[self rebuildTableDataAnimated:YES];
-	
+
 	[self.navigationItem setRightBarButtonItem:[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
 																			 target:self
 																							  action:@selector(save)] autorelease] animated:YES];
@@ -311,16 +311,16 @@
 
 - (void)save
 {
-	[[NSUserDefaults standardUserDefaults] setObject:exclusions forKey:@"SHKExcluded"];	
-	
+	[[NSUserDefaults standardUserDefaults] setObject:exclusions forKey:@"SHKExcluded"];
+
 	[self.tableView setEditing:NO animated:YES];
 	[self rebuildTableDataAnimated:YES];
-	
+
 	[self.navigationItem setRightBarButtonItem:[[[UIBarButtonItem alloc] initWithTitle:SHKLocalizedString(@"Edit")
 																				 style:UIBarButtonItemStyleBordered
 																							  target:self
 																							  action:@selector(edit)] autorelease] animated:YES];
-	
+
 }
 
 @end

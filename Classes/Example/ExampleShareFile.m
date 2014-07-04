@@ -50,17 +50,17 @@
 							 nil
 							 ];
 	}
-	
+
 	return self;
 }
 
-- (void)loadView 
-{ 
+- (void)loadView
+{
 	self.webView = [[UIWebView alloc] initWithFrame:CGRectZero];
 	webView.delegate = self;
 	webView.scalesPageToFit = YES;
 	[webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"example.pdf"]]]];
-	
+
 	self.view = webView;
 	[webView release];
 }
@@ -69,13 +69,13 @@
 {
 	NSString *filePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"example.pdf"];
 	NSData *file = [NSData dataWithContentsOfFile:filePath];
-	
+
 	SHKItem *item = [SHKItem file:file filename:@"Awesome.pdf" mimeType:@"application/pdf" title:@"My Awesome PDF"];
 	SHKActionSheet *actionSheet = [SHKActionSheet actionSheetForItem:item];
 	[actionSheet showFromToolbar:self.navigationController.toolbar];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
 }

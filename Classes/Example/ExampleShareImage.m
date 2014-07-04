@@ -50,20 +50,20 @@
 							 nil
 							 ];
 	}
-	
+
 	return self;
 }
 
-- (void)loadView 
+- (void)loadView
 {
 	[super loadView];
-	
+
 	self.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"sanFran.jpg"]];
-	
+
 	imageView.frame = CGRectMake(0,0,self.view.bounds.size.width,self.view.bounds.size.height);
-	
+
 	[self.view addSubview:imageView];
-	
+
 	[imageView release];
 }
 
@@ -71,11 +71,11 @@
 {
 	SHKItem *item = [SHKItem image:imageView.image title:@"San Francisco"];
 	SHKActionSheet *actionSheet = [SHKActionSheet actionSheetForItem:item];
-	
+
 	[actionSheet showFromToolbar:self.navigationController.toolbar];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
 }

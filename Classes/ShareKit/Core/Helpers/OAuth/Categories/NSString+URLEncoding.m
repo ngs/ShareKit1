@@ -28,7 +28,7 @@
 
 @implementation NSString (OAURLEncodingAdditions)
 
-- (NSString *)URLEncodedString 
+- (NSString *)URLEncodedString
 {
     NSString *result = (NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
                                                                            (CFStringRef)self,
@@ -46,7 +46,7 @@
 																						   CFSTR(""),
 																						   kCFStringEncodingUTF8);
     [result autorelease];
-	return result;	
+	return result;
 }
 
 @end

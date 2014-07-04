@@ -25,13 +25,13 @@
  --------
  This is the longest step to getting set up, it involves filling in API keys for the supported services.
  It should be pretty painless though and should hopefully take no more than a few minutes.
- 
+
  Each key below as a link to a page where you can generate an api key.  Fill in the key for each service below.
- 
+
  A note on services you don't need:
  If, for example, your app only shares URLs then you probably won't need image services like Flickr.
  In these cases it is safe to leave an API key blank.
- 
+
  However, it is STRONGLY recommended that you do your best to support all services for the types of sharing you support.
  The core principle behind ShareKit is to leave the service choices up to the user.  Thus, you should not remove any services,
  leaving that decision up to the user.
@@ -56,7 +56,7 @@
 // Facebook - http://www.facebook.com/developers
 // If SHKFacebookUseSessionProxy is enabled then SHKFacebookSecret is ignored and should be left blank
 
-#define SHKFacebookUseSessionProxy  NO 
+#define SHKFacebookUseSessionProxy  NO
 #define SHKFacebookKey				@""
 #define SHKFacebookSecret			@""
 #define SHKFacebookSessionProxyURL  @""
@@ -67,13 +67,13 @@
 // Twitter - http://dev.twitter.com/apps/new
 /*
  Important Twitter settings to get right:
- 
+
  Differences between OAuth and xAuth
  --
  There are two types of authentication provided for Twitter, OAuth and xAuth.  OAuth is the default and will
  present a web view to log the user in.  xAuth presents a native entry form but requires Twitter to add xAuth to your app (you have to request it from them).
  If your app has been approved for xAuth, set SHKTwitterUseXAuth to 1.
- 
+
  Callback URL (important to get right for OAuth users)
  --
  1. Open your application settings at http://dev.twitter.com/apps/
